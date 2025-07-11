@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Volunteer - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Add these new styles to your existing css/style.css file */
+
+/* --- Volunteer Page Specific Styles --- */
+.volunteer-role-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.volunteer-role-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes button to bottom */
+    align-items: center;
+}
+
+/* Custom styles for form textareas */
+.form-control.rounded-4-custom {
+    border-radius: 0.75rem; /* Less rounded for textarea */
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border: 1px solid var(--light-border);
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control.rounded-4-custom:focus {
+    border-color: var(--primary-accent-light);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.15);
+}
+
+/* Ensure select dropdowns are also styled consistently */
+.form-select.rounded-pill-custom {
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--light-border);
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%233498db' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); /* Custom arrow */
+    background-position: right 1.5rem center;
+    background-size: 0.95rem 0.95rem;
+}
+
+.form-select.rounded-pill-custom:focus {
+    border-color: var(--primary-accent-light);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.15);
+    outline: 0;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <img src="img/ngo_logo.png" alt="Your NGO Logo" class="site-logo mb-1" height="80">
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon-simple"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#education">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#health">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#livelihood">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="donate.html">DONATE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="volunteer.html">VOLUNTEER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-3 fw-bold text-dark-simple mb-3">Become a Volunteer</h1>
+            <p class="lead text-muted-simple mb-0">Your time and skills can create a lasting impact.</p>
+            <nav aria-label="breadcrumb" class="mt-3">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">Volunteer</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <h2 class="text-center fw-bold text-dark-simple mb-5" data-aos="fade-up" data-aos-duration="800">Why Volunteer with Your NGO?</h2>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="img/why_volunteer.jpg" class="img-fluid rounded-4 shadow-lg" alt="People volunteering together">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="fw-bold text-dark-simple mb-3">Be the Change You Wish to See</h3>
+                    <p class="text-body-simple lead">
+                        Volunteering with Your NGO Name offers a unique opportunity to contribute directly to social development, gain new skills, and connect with like-minded individuals.
+                    </p>
+                    <ul class="list-unstyled text-body-simple impact-list">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary-simple me-2"></i> Directly impact lives and communities</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary-simple me-2"></i> Develop new skills and gain experience</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary-simple me-2"></i> Network with passionate individuals</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary-simple me-2"></i> Fulfill your civic responsibility</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary-simple me-2"></i> Receive a certificate of appreciation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-off">
+        <div class="container">
+            <h2 class="text-center fw-bold text-dark-simple mb-5" data-aos="fade-up" data-aos-duration="800">Explore Volunteer Roles</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 text-center p-4 volunteer-role-card hover-lift-simple">
+                        <div class="card-body">
+                            <i class="fas fa-chalkboard-user fa-3x text-primary-simple mb-3"></i>
+                            <h4 class="fw-bold text-dark-simple mb-2">Education Support</h4>
+                            <p class="text-muted-simple small">Help with tutoring, organize educational workshops, or assist in classroom activities for children.</p>
+                            <a href="#volunteerForm" class="btn btn-outline-primary-simple btn-sm rounded-pill px-4 py-2 mt-auto">Apply Now <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 text-center p-4 volunteer-role-card hover-lift-simple">
+                        <div class="card-body">
+                            <i class="fas fa-heart-pulse fa-3x text-success-simple mb-3"></i>
+                            <h4 class="fw-bold text-dark-simple mb-2">Health Camp Assistant</h4>
+                            <p class="text-muted-simple small">Assist medical teams during health camps, manage registrations, or help with patient outreach.</p>
+                            <a href="#volunteerForm" class="btn btn-outline-success-simple btn-sm rounded-pill px-4 py-2 mt-auto">Apply Now <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 text-center p-4 volunteer-role-card hover-lift-simple">
+                        <div class="card-body">
+                            <i class="fas fa-hands-holding fa-3x text-info-simple mb-3"></i>
+                            <h4 class="fw-bold text-dark-simple mb-2">Livelihood Mentor</h4>
+                            <p class="text-muted-simple small">Share your skills in craft, small business, or vocational training with community members.</p>
+                            <a href="#volunteerForm" class="btn btn-outline-info-simple btn-sm rounded-pill px-4 py-2 mt-auto">Apply Now <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 text-center p-4 volunteer-role-card hover-lift-simple">
+                        <div class="card-body">
+                            <i class="fas fa-bullhorn fa-3x text-warning-simple mb-3"></i>
+                            <h4 class="fw-bold text-dark-simple mb-2">Outreach & Awareness</h4>
+                            <p class="text-muted-simple small">Help spread awareness about our cause, manage social media, or assist in fundraising campaigns.</p>
+                            <a href="#volunteerForm" class="btn btn-outline-warning-simple btn-sm rounded-pill px-4 py-2 mt-auto">Apply Now <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 text-center p-4 volunteer-role-card hover-lift-simple">
+                        <div class="card-body">
+                            <i class="fas fa-handshake-angle fa-3x text-danger-simple mb-3"></i>
+                            <h4 class="fw-bold text-dark-simple mb-2">Event Management</h4>
+                            <p class="text-muted-simple small">Support in planning, organizing, and executing various NGO events and campaigns.</p>
+                            <a href="#volunteerForm" class="btn btn-outline-danger-simple btn-sm rounded-pill px-4 py-2 mt-auto">Apply Now <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 text-center p-4 volunteer-role-card hover-lift-simple">
+                        <div class="card-body">
+                            <i class="fas fa-hands-clapping fa-3x text-secondary-simple mb-3"></i>
+                            <h4 class="fw-bold text-dark-simple mb-2">General Support</h4>
+                            <p class="text-muted-simple small">Offer administrative support, data entry, or assist with daily office operations.</p>
+                            <a href="#volunteerForm" class="btn btn-outline-secondary-simple btn-sm rounded-pill px-4 py-2 mt-auto">Apply Now <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure" id="volunteerForm">
+        <div class="container">
+            <h2 class="text-center fw-bold text-dark-simple mb-5" data-aos="fade-up" data-aos-duration="800">Volunteer Registration Form</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                        <form action="YOUR_VOLUNTEER_PROCESS_URL" method="POST" id="volunteerRegistrationForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label for="fullName" class="form-label fw-bold text-dark-simple">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-lg rounded-pill-custom" id="fullName" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-bold text-dark-simple">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control form-control-lg rounded-pill-custom" id="email" placeholder="john.doe@example.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label fw-bold text-dark-simple">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control form-control-lg rounded-pill-custom" id="phone" placeholder="+91-9876543210" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="preferredRole" class="form-label fw-bold text-dark-simple">Preferred Volunteer Role</label>
+                                    <select class="form-select form-select-lg rounded-pill-custom" id="preferredRole">
+                                        <option selected>Choose...</option>
+                                        <option value="education">Education Support</option>
+                                        <option value="health">Health Camp Assistant</option>
+                                        <option value="livelihood">Livelihood Mentor</option>
+                                        <option value="outreach">Outreach & Awareness</option>
+                                        <option value="event">Event Management</option>
+                                        <option value="general">General Support</option>
+                                        <option value="other">Other (Please specify)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label fw-bold text-dark-simple">Tell Us About Yourself / Skills</label>
+                                    <textarea class="form-control rounded-4-custom" id="message" rows="5" placeholder="Share your experience, skills, and why you want to volunteer..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="termsAndConditions" required>
+                                        <label class="form-check-label text-muted-simple" for="termsAndConditions">
+                                            I agree to the <a href="privacy-policy.html" class="text-primary-simple text-decoration-none fw-bold hover-text-accent">Terms and Conditions</a> and <a href="privacy-policy.html" class="text-primary-simple text-decoration-none fw-bold hover-text-accent">Privacy Policy</a>.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center mt-5">
+                                    <button type="submit" class="btn btn-primary-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover">Submit Application <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="alert mt-4 d-none" role="alert" id="volunteerFormMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const volunteerForm = document.getElementById('volunteerRegistrationForm');
+            const formMessage = document.getElementById('volunteerFormMessage');
+
+            volunteerForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent actual form submission
+
+                // Simple form validation (can be expanded)
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const termsChecked = document.getElementById('termsAndConditions').checked;
+
+                if (!fullName || !email || !phone || !termsChecked) {
+                    formMessage.classList.remove('d-none');
+                    formMessage.classList.remove('alert-success');
+                    formMessage.classList.add('alert-danger');
+                    formMessage.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Please fill in all required fields and agree to the terms.';
+                    return;
+                }
+
+                // In a real application, you would send this data to a backend server.
+                // For a static site, you can use a service like Formspree.io for email notifications.
+                // Example with Formspree (replace YOUR_FORM_ID with your actual Formspree ID):
+                // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                //     method: 'POST',
+                //     body: new FormData(volunteerForm),
+                //     headers: {
+                //         'Accept': 'application/json'
+                //     }
+                // }).then(response => {
+                //     if (response.ok) {
+                //         formMessage.classList.remove('d-none');
+                //         formMessage.classList.remove('alert-danger');
+                //         formMessage.classList.add('alert-success');
+                //         formMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i> Your volunteer application has been submitted successfully!';
+                //         volunteerForm.reset(); // Clear the form
+                //     } else {
+                //         response.json().then(data => {
+                //             if (Object.hasOwn(data, 'errors')) {
+                //                 formMessage.classList.remove('d-none');
+                //                 formMessage.classList.remove('alert-success');
+                //                 formMessage.classList.add('alert-danger');
+                //                 formMessage.innerHTML = '<i class="fas fa-times-circle me-2"></i> There was an error submitting your application: ' + data["errors"].map(error => error["message"]).join(", ");
+                //             } else {
+                //                 formMessage.classList.remove('d-none');
+                //                 formMessage.classList.remove('alert-success');
+                //                 formMessage.classList.add('alert-danger');
+                //                 formMessage.innerHTML = '<i class="fas fa-times-circle me-2"></i> Oops! Something went wrong. Please try again.';
+                //             }
+                //         })
+                //     }
+                // }).catch(error => {
+                //     formMessage.classList.remove('d-none');
+                //     formMessage.classList.remove('alert-success');
+                //     formMessage.classList.add('alert-danger');
+                //     formMessage.innerHTML = '<i class="fas fa-times-circle me-2"></i> Network error. Please try again later.';
+                // });
+
+                // Placeholder for static site:
+                formMessage.classList.remove('d-none');
+                formMessage.classList.remove('alert-danger');
+                formMessage.classList.add('alert-success');
+                formMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i> Your volunteer application has been submitted successfully! (This is a placeholder message)';
+                volunteerForm.reset(); // Clear the form after simulated submission
+            });
+        });
+    </script>
+</body>
+</html>

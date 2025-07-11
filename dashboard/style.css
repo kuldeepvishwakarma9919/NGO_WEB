@@ -1,0 +1,179 @@
+  /* Custom styles for Admin Dashboard */
+
+:root {
+    /* Define dashboard specific colors if needed, or re-use existing ones */
+    --dark-sidebar-bg: #212529; /* Darker tone for sidebar */
+    --active-sidebar-item: var(--primary-accent-strong);
+    --sidebar-text-color: #f8f9fa; /* Light text for dark sidebar */
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Wrapper for Sidebar & Content --- */
+#wrapper {
+    display: flex;
+    min-height: 100vh; /* Ensure wrapper takes full viewport height */
+}
+
+/* --- Sidebar Styles --- */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 250px; /* Fixed width for sidebar */
+    margin-left: -250px; /* Hide by default */
+    transition: margin .25s ease-out;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    background-color: var(--dark-sidebar-bg); /* Dark background */
+    display: flex;
+    flex-direction: column; /* For push-to-bottom logout */
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0; /* Show sidebar when toggled */
+}
+
+.sidebar-heading {
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: var(--dark-sidebar-bg); /* Match sidebar bg */
+    color: var(--sidebar-text-color);
+}
+
+.list-group-flush .list-group-item {
+    background-color: var(--dark-sidebar-bg);
+    color: var(--sidebar-text-color);
+    border: none;
+    padding: 0.85rem 1.5rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.list-group-flush .list-group-item:hover {
+    background-color: var(--primary-accent-light);
+    color: var(--white-pure);
+}
+
+.list-group-flush .list-group-item.active-sidebar {
+    background-color: var(--active-sidebar-item) !important;
+    color: var(--white-pure) !important;
+    border-left: 4px solid var(--primary-accent-light); /* Highlight active */
+}
+
+.list-group-flush .list-group-item i {
+    width: 20px; /* Align icons */
+    text-align: center;
+}
+
+/* Push Logout to bottom */
+.list-group-flush .mt-auto {
+    margin-top: auto !important; /* Pushes it to the bottom */
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+}
+
+
+/* --- Page Content Styles --- */
+#page-content-wrapper {
+    min-width: 100vw;
+    background-color: var(--light-gray-simple); /* Light background for content */
+}
+
+#wrapper.toggled #page-content-wrapper {
+    min-width: calc(100vw - 250px);
+}
+
+/* Navbar specific for dashboard */
+#page-content-wrapper .navbar {
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.dashboard-stat-card .icon-circle-simple {
+    width: 55px;
+    height: 55px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.dashboard-stat-card h4 {
+    font-size: 1.75rem;
+}
+
+.dashboard-chart-card {
+    min-height: 350px; /* Consistent height for chart */
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-chart-card canvas {
+    max-height: 300px;
+}
+
+.dashboard-activity-card .list-group-item {
+    border-color: var(--light-border);
+    background-color: transparent;
+}
+
+.dashboard-activity-card .list-group-item:last-child {
+    border-bottom: none;
+}
+
+.dashboard-activity-card .list-group-item i {
+    font-size: 1.1rem;
+    width: 25px; /* Adjust for icon alignment */
+}
+
+.dashboard-quick-action-btn {
+    border-width: 1.5px !important;
+    padding: 1.5rem !important;
+    transition: all 0.2s ease;
+}
+
+.dashboard-quick-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* Table styling */
+.recent-donations-table thead th {
+    font-weight: 600;
+    color: var(--dark-text-color-simple);
+    border-bottom-color: var(--light-border);
+}
+
+.recent-donations-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.recent-donations-table tbody tr:hover {
+    background-color: var(--light-gray-simple);
+}
+
+.recent-donations-table tbody td,
+.recent-donations-table tbody th {
+    border-color: var(--light-border);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0; /* Always show sidebar on larger screens */
+    }
+
+    #page-content-wrapper {
+        min-width: 0; /* Reset min-width for larger screens */
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -250px; /* Hide sidebar on larger screens when toggled */
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        min-width: 100vw;
+    }
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event: Health Camp in Village [X] - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Add these new styles to your existing css/style.css file */
+
+/* --- News/Event Details Page Specific Styles --- */
+.news-detail-content {
+    line-height: 1.8;
+}
+
+.news-detail-content img {
+    height: auto; /* Allow image to scale proportionally */
+    max-height: 500px; /* Limit height for main image */
+    object-fit: cover;
+    width: 100%;
+}
+
+.news-detail-content .hover-zoom-simple {
+    display: block; /* Ensures the image takes full width of its parent */
+    overflow: hidden; /* Hides parts of the image during zoom */
+}
+
+.news-detail-content .hover-zoom-simple img {
+    transition: transform 0.3s ease;
+}
+
+.news-detail-content .hover-zoom-simple:hover img {
+    transform: scale(1.05); /* Slightly zoom on hover */
+}
+
+.news-detail-content .blockquote {
+    font-size: 1.25rem;
+    padding-left: 20px;
+    position: relative;
+    color: var(--dark-text-color-simple);
+}
+
+.news-detail-content .blockquote::before {
+    content: "\201C"; /* Left double quotation mark */
+    font-family: 'Georgia', serif;
+    font-size: 4em;
+    color: var(--primary-accent-strong);
+    position: absolute;
+    left: 0px;
+    top: -20px;
+    opacity: 0.2;
+    line-height: 1;
+}
+
+.news-detail-content .blockquote-footer {
+    font-size: 0.9em;
+    color: var(--text-muted-simple);
+}
+
+/* Lightbox customizations are already in program-details section, they will apply here too */
+
+/* Related news/event card styling (re-using general news-event-card-simple from news-events.html) */
+.news-event-card-simple .news-event-img {
+    height: 200px; /* Consistent height for images */
+    object-fit: cover;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <img src="img/ngo_logo.png" alt="Your NGO Logo" class="site-logo mb-1" height="80">
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon-simple"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="program-details.html">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="program-details.html">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="program-details.html">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="donate.html">DONATE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="volunteer.html">VOLUNTEER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-3 fw-bold text-dark-simple mb-3">Health Camp Provides Free Check-ups in Village [X]</h1>
+            <p class="lead text-muted-simple mb-0">Posted on July 10, 2025 by Your NGO Team</p>
+            <nav aria-label="breadcrumb" class="mt-3">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item"><a href="news-events.html" class="text-muted-simple hover-text-accent">News & Events</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">Health Camp</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="news-detail-content">
+                        <img src="img/news_health_camp_main.jpg" class="img-fluid rounded-4 shadow-lg mb-5" alt="Health Camp Image" data-aos="zoom-in" data-aos-duration="1000">
+
+                        <p class="text-body-simple fs-5" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+                            **[Village Name], [Date]:** Your NGO Name successfully organized a free health check-up camp in Village [X] on [Date of Event], benefiting over 300 residents. The camp aimed to provide essential medical services and raise awareness about preventive healthcare in underserved rural areas.
+                        </p>
+                        <p class="text-body-simple" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                            A team of dedicated doctors, nurses, and volunteers offered a range of services including general health check-ups, blood pressure monitoring, blood sugar tests, and basic dental and eye screenings. Free medicines were also distributed to those in need.
+                        </p>
+                        <blockquote class="blockquote border-start border-primary-simple border-4 ps-4 py-2 my-5" data-aos="fade-left" data-aos-duration="1000">
+                            <p class="mb-0 fst-italic text-dark-simple fs-5">
+                                "Access to basic healthcare is a fundamental right. Our health camps are crucial in reaching out to communities that lack adequate medical facilities."
+                            </p>
+                            <footer class="blockquote-footer mt-2 text-muted-simple">
+                                <cite title="Source Title">Dr. Rakesh Kumar, Lead Medical Volunteer</cite>
+                            </footer>
+                        </blockquote>
+                        <p class="text-body-simple" data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">
+                            The camp also featured interactive sessions on hygiene, nutrition, and common health issues, encouraging villagers to adopt healthier lifestyles. Special attention was given to women's and children's health, with counselors providing advice on maternal and child care.
+                        </p>
+
+                        <div class="row g-4 my-4">
+                            <div class="col-md-6" data-aos="fade-right" data-aos-duration="900" data-aos-delay="400">
+                                <a href="img/news_health_camp_side1_large.jpg" data-lightbox="news-gallery" data-title="Doctor examining a patient">
+                                    <img src="img/news_health_camp_side1_thumb.jpg" class="img-fluid rounded-3 shadow-sm hover-zoom-simple" alt="Health camp side view 1">
+                                </a>
+                            </div>
+                            <div class="col-md-6" data-aos="fade-left" data-aos-duration="900" data-aos-delay="500">
+                                <a href="img/news_health_camp_side2_large.jpg" data-lightbox="news-gallery" data-title="Volunteers assisting during registration">
+                                    <img src="img/news_health_camp_side2_thumb.jpg" class="img-fluid rounded-3 shadow-sm hover-zoom-simple" alt="Health camp side view 2">
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="text-body-simple" data-aos="fade-up" data-aos-duration="900" data-aos-delay="600">
+                            "We are immensely grateful to Your NGO Name for bringing this camp to our village," said [Villager Name], a resident of Village [X]. "Many of us cannot afford regular check-ups, and this initiative has been a great help."
+                        </p>
+                        <p class="text-body-simple" data-aos="fade-up" data-aos-duration="900" data-aos-delay="700">
+                            The success of the health camp underscores the critical need for continued support in healthcare for rural communities. Your NGO Name remains committed to organizing such initiatives regularly and expanding its reach to more villages in the region.
+                        </p>
+                        <hr class="my-5">
+
+                        <div class="d-flex justify-content-center align-items-center mb-4" data-aos="fade-up" data-aos-duration="900" data-aos-delay="800">
+                            <h5 class="fw-bold text-dark-simple me-3 mb-0">Share This Story:</h5>
+                            <a href="#" class="btn btn-outline-primary-simple rounded-pill me-2" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
+                            <a href="#" class="btn btn-outline-info-simple rounded-pill me-2" target="_blank" title="Share on Twitter"><i class="fab fa-twitter me-2"></i> Twitter</a>
+                            <a href="#" class="btn btn-outline-success-simple rounded-pill" target="_blank" title="Share on WhatsApp"><i class="fab fa-whatsapp me-2"></i> WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-off">
+        <div class="container">
+            <h2 class="text-center fw-bold text-dark-simple mb-5" data-aos="fade-up" data-aos-duration="800">More From Our Newsroom</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card-simple hover-lift-simple">
+                        <img src="img/news_education_workshop.jpg" class="card-img-top rounded-top-4 news-event-img" alt="Education workshop">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <small class="text-muted-simple mb-2 d-flex align-items-center"><i class="fas fa-calendar-alt me-2 text-primary-simple"></i> July 5, 2025</small>
+                            <h5 class="fw-bold text-dark-simple mb-2">Empowering Youth: Skill Development Workshop</h5>
+                            <p class="text-muted-simple small flex-grow-1">A successful workshop on vocational skills conducted for rural youth, aiming for self-reliance.</p>
+                            <a href="news-event-details.html" class="btn btn-sm btn-outline-primary-simple rounded-pill px-3 py-2 mt-3">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card-simple hover-lift-simple">
+                        <img src="img/news_tree_plantation.jpg" class="card-img-top rounded-top-4 news-event-img" alt="Tree plantation event">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <small class="text-muted-simple mb-2 d-flex align-items-center"><i class="fas fa-calendar-alt me-2 text-primary-simple"></i> June 28, 2025</small>
+                            <h5 class="fw-bold text-dark-simple mb-2">Green Initiative: Community Tree Plantation Drive</h5>
+                            <p class="text-muted-simple small flex-grow-1">Volunteers joined hands for a massive tree plantation drive to promote environmental sustainability.</p>
+                            <a href="news-event-details.html" class="btn btn-sm btn-outline-primary-simple rounded-pill px-3 py-2 mt-3">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <a href="news-events.html" class="btn btn-outline-primary-simple rounded-pill px-4 py-2">View All News & Events <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="privacy-policy.html" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="terms-of-service.html" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

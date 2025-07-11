@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Gallery - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" integrity="sha512-ZKX+B9oG01msHwzX2r4b4fF+u6f7R/hU0f+I3t+vJmF2wG5V5p+1a9G2f+S3w+w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Add these new styles to your existing css/style.css file */
+
+/* --- Gallery Specific Styles --- */
+.gallery-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: var(--white-pure);
+    border-radius: var(--border-radius-card);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.gallery-card img {
+    display: block;
+    width: 100%;
+    height: 250px; /* Fixed height for gallery images */
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.gallery-card .overlay-simple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-pure);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: var(--border-radius-card); /* Match card radius */
+}
+
+.gallery-card:hover .overlay-simple {
+    opacity: 1;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.overlay-simple i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.overlay-simple .overlay-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.img-fluid-cover-gallery {
+    /* To override any previous img-fluid-cover-sm if it was more general */
+    width: 100%;
+    height: 250px; /* Standard height for gallery images */
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Hidden gallery items for "Load More" functionality */
+.hidden-gallery-item {
+    display: none;
+}
+
+/* Lightbox overrides for consistent look */
+#lightbox .lb-dataContainer {
+    background-color: var(--white-pure);
+    color: var(--dark-charcoal);
+    border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+}
+#lightbox .lb-caption {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--medium-grey);
+}
+#lightbox .lb-number {
+    color: var(--light-muted-grey);
+}
+#lightbox .lb-outerContainer {
+    background-color: var(--white-pure);
+    border-radius: var(--border-radius-card);
+    box-shadow: var(--shadow-lg-simple);
+}
+#lightbox button.lb-close {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+#lightbox button.lb-close:hover {
+    opacity: 1;
+}
+#lightbox a.lb-prev, #lightbox a.lb-next {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+#lightbox a.lb-prev:hover, #lightbox a.lb-next:hover {
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <img src="img/ngo_logo.png" alt="Your NGO Logo" class="site-logo mb-1" height="80">
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon-simple"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#education">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#health">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#livelihood">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-dark-simple mb-3">Our Gallery</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">Gallery</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <h2 class="text-center display-5 fw-bold mb-5 text-dark-simple" data-aos="fade-up" data-aos-duration="800">Moments of Impact</h2>
+
+            <div id="gallery-container" class="row g-4 justify-content-center">
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Children learning in a community center">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Children learning">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Education Program</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Medical camp in a rural village">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Medical Camp">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Health Initiative</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Women engaged in vocational training">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Vocational Training">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Livelihood Project</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Community gathering for awareness">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Community Gathering">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Awareness Program</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item hidden-gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Volunteers distributing aid">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Aid Distribution">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Volunteer Action</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item hidden-gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Children participating in sports">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Children Sports">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Youth Development</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item hidden-gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Farmers learning new techniques">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Agricultural Training">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Rural Livelihoods</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 gallery-item hidden-gallery-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                    <a href="img/hero_slide_1.jpg" data-lightbox="gallery" data-title="Celebrating success with community members">
+                        <div class="gallery-card border-simple shadow-sm rounded-4 hover-lift-simple">
+                            <img src="img/hero_slide_1.jpg" class="img-fluid-cover-gallery rounded-top-4" alt="Community Celebration">
+                            <div class="overlay-simple rounded-bottom-4">
+                                <i class="fas fa-expand fa-2x"></i>
+                                <span class="overlay-text">Community Success</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                </div>
+
+            <div class="text-center mt-5" id="load-more-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                <button id="loadMoreBtn" class="btn btn-outline-primary-simple btn-lg rounded-pill px-5 py-3">Load More Photos <i class="fas fa-chevron-down ms-2"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-YyoxH5LgVl/tQ9wF4d2+sJk/a/z9PjFp/G/fG+lJ7q/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

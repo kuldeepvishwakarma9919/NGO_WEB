@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create News/Event - Admin Panel - Your NGO Name</title>
+
+    <!-- Google Fonts: Inter (versatile, clean, modern) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- AOS (Animate On Scroll) Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS (consistent styling) -->
+    <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="dashboard/style.css">
+    <!-- dashboard.css will contain the specific styles for the admin panel layout (sidebar, etc.) -->
+
+    <style>
+        /* Add or override styles specific to this create news page within the dashboard layout */
+
+        .form-container-admin {
+            background-color: var(--white-pure);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-control.rounded-pill-custom,
+        .form-select.rounded-pill-custom,
+        .btn.rounded-pill-custom {
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid var(--light-border);
+            box-shadow: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control.rounded-pill-custom:focus,
+        .form-select.rounded-pill-custom:focus {
+            border-color: var(--primary-accent-light);
+            box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.15);
+        }
+
+        /* Textarea specific styling - less rounded */
+        .form-control.rounded-custom-textarea {
+            border-radius: 0.75rem; /* Slightly rounded corners for textarea */
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            border: 1px solid var(--light-border);
+            box-shadow: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control.rounded-custom-textarea:focus {
+            border-color: var(--primary-accent-light);
+            box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.15);
+        }
+
+        /* File input styling */
+        .form-control-file {
+            padding: 0.75rem 1.25rem;
+            border: 1px solid var(--light-border);
+            border-radius: 0.75rem;
+            background-color: var(--white-off);
+        }
+        .form-control-file::file-selector-button {
+            background-color: var(--primary-simple);
+            color: var(--white-pure);
+            border: none;
+            padding: 0.75rem 1.25rem;
+            margin-right: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .form-control-file::file-selector-button:hover {
+            background-color: var(--primary-accent-strong);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark-sidebar border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white p-4 text-center border-bottom border-secondary-subtle">
+                <a href="index.html" class="text-white text-decoration-none fw-bold fs-5 d-block">Your NGO Admin</a>
+                <small class="text-muted">Dashboard</small>
+            </div>
+            <div class="list-group list-group-flush pt-2">
+                <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                </a>
+                <a href="donation-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-hand-holding-usd me-2"></i> Donations
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-users me-2"></i> Volunteers
+                </a>
+                <a href="news-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white active-sidebar py-3">
+                    <i class="fas fa-newspaper me-2"></i> News & Events
+                </a>
+                <a href="gallery-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-images me-2"></i> Gallery
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-comments me-2"></i> Testimonials
+                </a>
+                <a href="settings.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-cogs me-2"></i> Settings
+                </a>
+                <a href="login.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3 mt-auto">
+                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                </a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="bg-light-gray-simple">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm-simple py-3">
+                <div class="container-fluid">
+                    <button class="btn btn-primary-simple btn-sm rounded-pill px-3 py-2" id="menu-toggle"><i class="fas fa-bars me-1"></i> Toggle Menu</button>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon-simple"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active me-3">
+                                <a class="nav-link text-dark-simple hover-text-accent" href="#"><i class="fas fa-bell me-1"></i> Notifications <span class="badge bg-danger ms-1">3</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-simple" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/admin_avatar.png" class="rounded-circle me-2" width="30" height="30" alt="Admin Avatar"> Admin User
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end animate-fade-in-down" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="#"><i class="fas fa-user-circle me-2"></i> Profile</a>
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="#"><i class="fas fa-cog me-2"></i> Settings</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid py-4 py-lg-5">
+                <h1 class="fw-bold text-dark-simple mb-4" data-aos="fade-right" data-aos-duration="800">Create New News/Event</h1>
+                <p class="text-muted-simple mb-5" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                    Fill in the details below to add a new news article or event announcement.
+                </p>
+
+                <div class="form-container-admin" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                    <form action="YOUR_NEWS_SUBMISSION_URL" method="POST" enctype="multipart/form-data" id="createNewsForm">
+                        <div class="row g-4">
+                            <div class="col-md-8">
+                                <label for="newsTitle" class="form-label fw-bold text-dark-simple">Title <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control rounded-pill-custom" id="newsTitle" placeholder="e.g., Health Camp in Village X" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="category" class="form-label fw-bold text-dark-simple">Category <span class="text-danger">*</span></label>
+                                <select class="form-select rounded-pill-custom" id="category" required>
+                                    <option selected disabled value="">Select Category</option>
+                                    <option value="News">News</option>
+                                    <option value="Event">Event</option>
+                                    <option value="Announcement">Announcement</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="publishDate" class="form-label fw-bold text-dark-simple">Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control rounded-pill-custom" id="publishDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="author" class="form-label fw-bold text-dark-simple">Author</label>
+                                <input type="text" class="form-control rounded-pill-custom" id="author" placeholder="e.g., NGO Team" value="Admin User">
+                            </div>
+                            <div class="col-12">
+                                <label for="featuredImage" class="form-label fw-bold text-dark-simple">Featured Image</label>
+                                <input class="form-control form-control-file" type="file" id="featuredImage" accept="image/*">
+                                <small class="text-muted-simple mt-2 d-block">Recommended size: 1200x600px</small>
+                            </div>
+                            <div class="col-12">
+                                <label for="newsContent" class="form-label fw-bold text-dark-simple">Content <span class="text-danger">*</span></label>
+                                <textarea class="form-control rounded-custom-textarea" id="newsContent" rows="10" placeholder="Write your news article or event details here..." required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="status" class="form-label fw-bold text-dark-simple">Status <span class="text-danger">*</span></label>
+                                <select class="form-select rounded-pill-custom" id="status" required>
+                                    <option value="Draft">Draft</option>
+                                    <option value="Published" selected>Published</option>
+                                    <option value="Archived">Archived</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tags" class="form-label fw-bold text-dark-simple">Tags (comma separated)</label>
+                                <input type="text" class="form-control rounded-pill-custom" id="tags" placeholder="e.g., education, health, workshop">
+                            </div>
+                        </div>
+
+                        <div class="mt-5 d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-secondary-simple rounded-pill px-4 py-2 me-3" onclick="window.location.href='news-list.html'">Cancel</button>
+                            <button type="submit" class="btn btn-primary-simple rounded-pill px-5 py-2">Publish News/Event <i class="fas fa-paper-plane ms-2"></i></button>
+                        </div>
+                    </form>
+                    <div class="alert mt-4 d-none" role="alert" id="newsFormMessage"></div>
+                </div>
+
+            </div> <!-- /container-fluid -->
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Sidebar Toggle Script (from your dashboard.html)
+        document.getElementById("menu-toggle").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.getElementById("wrapper").classList.toggle("toggled");
+        });
+
+        // AOS Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+        });
+
+        // Highlight active sidebar item
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname.split('/').pop();
+            const sidebarLinks = document.querySelectorAll('#sidebar-wrapper .list-group-item');
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active-sidebar'); // Remove active from all first
+                if (link.getAttribute('href') === currentPath || (currentPath === 'create-news.html' && link.getAttribute('href') === 'news-list.html')) {
+                    link.classList.add('active-sidebar');
+                }
+            });
+
+            // Handle form submission (placeholder)
+            const createNewsForm = document.getElementById('createNewsForm');
+            const newsFormMessage = document.getElementById('newsFormMessage');
+
+            createNewsForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent actual form submission
+
+                // Basic validation
+                const title = document.getElementById('newsTitle').value;
+                const category = document.getElementById('category').value;
+                const publishDate = document.getElementById('publishDate').value;
+                const content = document.getElementById('newsContent').value;
+
+                if (!title || !category || !publishDate || !content) {
+                    newsFormMessage.classList.remove('d-none');
+                    newsFormMessage.classList.remove('alert-success');
+                    newsFormMessage.classList.add('alert-danger');
+                    newsFormMessage.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Please fill in all required fields.';
+                    return;
+                }
+
+                // In a real application, you would send this data to a backend API.
+                // Example: fetch('/api/news', { method: 'POST', body: new FormData(createNewsForm) })
+                
+                newsFormMessage.classList.remove('d-none');
+                newsFormMessage.classList.remove('alert-danger');
+                newsFormMessage.classList.add('alert-success');
+                newsFormMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i> News/Event created successfully! (This is a placeholder action)';
+                
+                // Optionally clear form or redirect after success
+                createNewsForm.reset();
+                // setTimeout(() => { window.location.href = 'news-list.html'; }, 2000); // Redirect after 2 seconds
+            });
+        });
+    </script>
+</body>
+</html>

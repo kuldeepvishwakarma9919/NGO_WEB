@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="dashboard/style.css"> 
+</head>
+    
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <div class="bg-dark-sidebar border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white p-4 text-center border-bottom border-secondary-subtle">
+                <a href="index.html" class="text-white text-decoration-none fw-bold fs-5 d-block">Your NGO Admin</a>
+                <small class="text-muted">Dashboard</small>
+            </div>
+            <div class="list-group list-group-flush pt-2">
+                <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white active-sidebar py-3"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
+                <a href="donate.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3"><i class="fas fa-hand-holding-heart me-2"></i> Donations</a>
+                <a href="" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3"><i class="fas fa-users me-2"></i> Volunteers</a>
+                <a href="news-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3"><i class="fas fa-newspaper me-2"></i> News & Events</a>
+                <a href="gallery-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3"><i class="fas fa-images me-2"></i> Gallery</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3"><i class="fas fa-comments me-2"></i> Testimonials</a>
+                <a href="settings.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3"><i class="fas fa-cogs me-2"></i> Settings</a>
+                <a href="login.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3 mt-auto"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+            </div>
+        </div>
+        <div id="page-content-wrapper" class="bg-light-gray-simple">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm-simple py-3">
+                <div class="container-fluid">
+                    <button class="btn btn-primary-simple btn-sm rounded-pill px-3 py-2" id="menu-toggle"><i class="fas fa-bars me-1"></i> Toggle Menu</button>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon-simple"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active me-3">
+                                <a class="nav-link text-dark-simple hover-text-accent" href="#"><i class="fas fa-bell me-1"></i> Notifications <span class="badge bg-danger ms-1">3</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-simple" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/admin_avatar.png" class="rounded-circle me-2" width="30" height="30" alt="Admin Avatar"> Admin User
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end animate-fade-in-down" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="#"><i class="fas fa-user-circle me-2"></i> Profile</a>
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="#"><i class="fas fa-cog me-2"></i> Settings</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid py-4 py-lg-5">
+                <h1 class="fw-bold text-dark-simple mb-4" data-aos="fade-right" data-aos-duration="800">Dashboard Overview</h1>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        <div class="card bg-white border-0 shadow-sm rounded-4 dashboard-stat-card">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="icon-circle-simple bg-primary-subtle text-primary-simple me-3">
+                                    <i class="fas fa-rupee-sign fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-muted-simple mb-0">Total Donations</h6>
+                                    <h4 class="fw-bold text-dark-simple mb-0">₹1,25,000</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <div class="card bg-white border-0 shadow-sm rounded-4 dashboard-stat-card">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="icon-circle-simple bg-success-subtle text-success-simple me-3">
+                                    <i class="fas fa-users fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-muted-simple mb-0">Active Volunteers</h6>
+                                    <h4 class="fw-bold text-dark-simple mb-0">125</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                        <div class="card bg-white border-0 shadow-sm rounded-4 dashboard-stat-card">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="icon-circle-simple bg-info-subtle text-info-simple me-3">
+                                    <i class="fas fa-hands-helping fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-muted-simple mb-0">Ongoing Projects</h6>
+                                    <h4 class="fw-bold text-dark-simple mb-0">8</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <div class="card bg-white border-0 shadow-sm rounded-4 dashboard-stat-card">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="icon-circle-simple bg-warning-subtle text-warning-simple me-3">
+                                    <i class="fas fa-newspaper fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-muted-simple mb-0">Recent News</h6>
+                                    <h4 class="fw-bold text-dark-simple mb-0">15</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                        <div class="card bg-white border-0 shadow-sm rounded-4 p-4 dashboard-chart-card">
+                            <h5 class="fw-bold text-dark-simple mb-4">Donations Over Time</h5>
+                            <canvas id="donationsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                        <div class="card bg-white border-0 shadow-sm rounded-4 p-4 dashboard-activity-card">
+                            <h5 class="fw-bold text-dark-simple mb-4">Latest Activities</h5>
+                            <ul class="list-group list-group-flush latest-activity-list">
+                                <li class="list-group-item d-flex align-items-center justify-content-between py-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-hand-holding-heart text-primary-simple me-3"></i>
+                                        <div>
+                                            <span class="text-dark-simple fw-bold d-block">New Donation: ₹2,500</span>
+                                            <small class="text-muted-simple">By Rahul Sharma - 2 hours ago</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success-simple">New</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center justify-content-between py-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-user-plus text-info-simple me-3"></i>
+                                        <div>
+                                            <span class="text-dark-simple fw-bold d-block">New Volunteer Joined</span>
+                                            <small class="text-muted-simple">Priya Singh - 1 day ago</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-primary-simple">Volunteer</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center justify-content-between py-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-newspaper text-warning-simple me-3"></i>
+                                        <div>
+                                            <span class="text-dark-simple fw-bold d-block">News Article Published</span>
+                                            <small class="text-muted-simple">"Empowering Education..." - 3 days ago</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning-simple">Content</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center justify-content-between py-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-calendar-alt text-danger-simple me-3"></i>
+                                        <div>
+                                            <span class="text-dark-simple fw-bold d-block">Event Scheduled: Health Camp</span>
+                                            <small class="text-muted-simple">Next Week - 5 days ago</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-info-simple">Event</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-white border-0 shadow-sm rounded-4 p-4 mb-5" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold text-dark-simple mb-4">Recent Donations</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle recent-donations-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Donor Name</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Anil Kumar</td>
+                                    <td class="fw-bold text-success-simple">₹2,500</td>
+                                    <td>2025-07-10</td>
+                                    <td><span class="badge bg-success-simple">Completed</span></td>
+                                    <td><a href="#" class="text-primary-simple"><i class="fas fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Priya Sharma</td>
+                                    <td class="fw-bold text-success-simple">₹1,000</td>
+                                    <td>2025-07-09</td>
+                                    <td><span class="badge bg-success-simple">Completed</span></td>
+                                    <td><a href="#" class="text-primary-simple"><i class="fas fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Suresh Patel</td>
+                                    <td class="fw-bold text-success-simple">₹5,000</td>
+                                    <td>2025-07-08</td>
+                                    <td><span class="badge bg-success-simple">Completed</span></td>
+                                    <td><a href="#" class="text-primary-simple"><i class="fas fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Geeta Devi</td>
+                                    <td class="fw-bold text-warning-simple">₹750</td>
+                                    <td>2025-07-07</td>
+                                    <td><span class="badge bg-warning-simple">Pending</span></td>
+                                    <td><a href="#" class="text-primary-simple"><i class="fas fa-eye"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Ravi Verma</td>
+                                    <td class="fw-bold text-success-simple">₹1,500</td>
+                                    <td>2025-07-06</td>
+                                    <td><span class="badge bg-success-simple">Completed</span></td>
+                                    <td><a href="#" class="text-primary-simple"><i class="fas fa-eye"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="#" class="btn btn-outline-primary-simple rounded-pill px-4 py-2">View All Donations <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+                <div class="card bg-white border-0 shadow-sm rounded-4 p-4 mb-5" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold text-dark-simple mb-4">Quick Actions</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4 col-sm-6">
+                            <a href="#" class="btn btn-outline-primary-simple w-100 py-3 rounded-pill d-flex align-items-center justify-content-center flex-column dashboard-quick-action-btn">
+                                <i class="fas fa-plus-circle fa-2x mb-2"></i>
+                                <span class="fw-bold">Add New News</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <a href="#" class="btn btn-outline-success-simple w-100 py-3 rounded-pill d-flex align-items-center justify-content-center flex-column dashboard-quick-action-btn">
+                                <i class="fas fa-user-plus fa-2x mb-2"></i>
+                                <span class="fw-bold">Register Volunteer</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <a href="#" class="btn btn-outline-info-simple w-100 py-3 rounded-pill d-flex align-items-center justify-content-center flex-column dashboard-quick-action-btn">
+                                <i class="fas fa-calendar-plus fa-2x mb-2"></i>
+                                <span class="fw-bold">Schedule Event</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        // Sidebar Toggle Script
+        document.getElementById("menu-toggle").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.getElementById("wrapper").classList.toggle("toggled");
+        });
+
+        // Chart.js for Donations Over Time
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('donationsChart').getContext('2d');
+            var donationsChart = new Chart(ctx, {
+                type: 'line', // or 'bar', 'doughnut', etc.
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'Monthly Donations (₹)',
+                        data: [12000, 19000, 15000, 22000, 18000, 25000, 28000], // Sample data
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)', // Primary accent color with transparency
+                        borderColor: 'rgba(52, 152, 219, 1)', // Primary accent color
+                        borderWidth: 2,
+                        tension: 0.4, // Smooth lines
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false, // Hide legend if only one dataset
+                        },
+                        title: {
+                            display: false,
+                            text: 'Donations Over Time'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)' // Light grid lines
+                            },
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return '₹' + value.toLocaleString(); // Add Rupee sign
+                                },
+                                color: '#6c757d' // Muted color for ticks
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false // Hide x-axis grid lines
+                            },
+                            ticks: {
+                                color: '#6c757d' // Muted color for ticks
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering Education: New Workshop Launched! - Your NGO Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+        /* Add these new styles to your existing css/style.css file */
+
+/* --- Sidebar Specific Styles --- */
+.sidebar-widget {
+    background-color: var(--white-pure);
+    border-radius: var(--border-radius-card);
+    margin-bottom: 2.5rem; /* Space between widgets */
+}
+
+.sidebar-widget h5 {
+    font-size: 1.3rem;
+    color: var(--dark-text-color-simple);
+    margin-bottom: 1.5rem;
+}
+
+.recent-posts-list li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--light-border);
+}
+
+.recent-posts-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.recent-post-img {
+    width: 70px; /* Fixed width for small post images */
+    height: 70px; /* Fixed height for small post images */
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.recent-posts-list a.fw-bold {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.category-list li a,
+.tag-cloud a {
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    color: var(--body-text-color-simple);
+}
+
+.category-list li a i {
+    font-size: 0.8em;
+    color: var(--primary-accent-light); /* Accent color for list icons */
+}
+
+.tag-cloud .badge {
+    border: 1px solid var(--light-border);
+    font-weight: normal;
+    font-size: 0.85rem;
+}
+
+.tag-cloud .badge.hover-bg-accent:hover {
+    background-color: var(--primary-accent-strong) !important;
+    border-color: var(--primary-accent-strong) !important;
+}
+
+
+/* --- Comments Section Specific Styles --- */
+.comments-section {
+    margin-top: 3rem; /* Space from news content */
+}
+
+.comments-section h4 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.comment-item {
+    background-color: var(--white-pure);
+    border: 1px solid var(--light-border);
+    border-radius: var(--border-radius-small); /* Slightly less rounded than cards */
+}
+
+.comment-avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.comment-body h6 {
+    font-size: 1.1rem;
+}
+
+.comment-body small {
+    font-size: 0.85rem;
+}
+
+.comment-form {
+    padding: 30px;
+    border: 1px solid var(--light-border);
+    border-radius: var(--border-radius-card);
+    background-color: var(--white-pure);
+}
+
+.comment-form h5 {
+    font-size: 1.5rem;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <img src="img/ngo_logo.png" alt="Your NGO Logo" class="site-logo mb-1" height="80">
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon-simple"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#education">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#health">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#livelihood">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-dark-simple mb-3">Empowering Education: New Workshop Launched!</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item"><a href="news-events.html" class="text-muted-simple hover-text-accent">News & Events</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">Empowering Education: New Workshop Launched!</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="news-article-container">
+                        <img src="img/news_full_1.jpg" class="img-fluid rounded-4 mb-4 news-feature-img" alt="Empowering Education Workshop" data-aos="zoom-in" data-aos-duration="1000">
+
+                        <div class="d-flex flex-wrap align-items-center mb-4 text-muted-simple small news-meta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                            <span class="me-3"><i class="far fa-calendar-alt me-1"></i> Published on July 10, 2025</span>
+                            <span class="me-3"><i class="fas fa-tags me-1"></i> <a href="#" class="text-muted-simple text-decoration-none hover-text-accent">Education</a>, <a href="#" class="text-muted-simple text-decoration-none hover-text-accent">Workshops</a></span>
+                            <span><i class="fas fa-user-edit me-1"></i> By NGO Team</span>
+                        </div>
+
+                        <div class="news-content text-body-simple" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                            <p class="lead fw-normal mb-4">
+                                We are thrilled to announce the successful launch of our new "Digital Literacy for Youth" workshop, designed to equip young individuals from underserved communities with essential computer skills. This initiative marks a significant step in our mission to bridge the digital divide.
+                            </p>
+
+                            <p>
+                                The workshop, held over three weeks at our community center, saw enthusiastic participation from over 50 students aged 12-18. Our curriculum covered fundamental computer operations, internet safety, basic word processing, and an introduction to online learning platforms. The aim is to provide these students with the tools they need to succeed in an increasingly digital world, opening doors to better educational and livelihood opportunities.
+                            </p>
+
+                            <figure class="figure my-4">
+                                <img src="img/news_content_1.jpg" class="figure-img img-fluid rounded-3 shadow-sm" alt="Students learning in workshop">
+                                <figcaption class="figure-caption text-center text-muted-simple">Students enthusiastically participating in the Digital Literacy Workshop.</figcaption>
+                            </figure>
+
+                            <p>
+                                Our dedicated team of volunteers and expert trainers worked tirelessly to ensure a hands-on and engaging learning experience. Interactive sessions, practical exercises, and personalized guidance were key components of the program, fostering a supportive environment for learning.
+                            </p>
+
+                            <blockquote class="blockquote bg-light-gray-simple p-4 rounded-3 border-start border-3 border-primary-simple my-4">
+                                <p class="mb-0 fst-italic">"Seeing the excitement on the students' faces as they grasped new concepts was truly rewarding. We believe digital literacy is not a luxury, but a necessity, and we are committed to making it accessible to all."</p>
+                                <footer class="blockquote-footer mt-2 text-dark-simple">Priya Sharma, <cite title="Source Title">Project Coordinator</cite></footer>
+                            </blockquote>
+
+                            <p>
+                                The positive feedback from both students and their parents has been overwhelming. Many expressed how this workshop has given them hope and confidence in their children's future prospects. We are already planning advanced modules and hope to expand this program to reach more communities in the coming months.
+                            </p>
+
+                            <p>
+                                We extend our heartfelt gratitude to our generous donors and dedicated volunteers whose support made this workshop possible. Together, we are empowering the next generation!
+                            </p>
+                        </div>
+
+                        <div class="news-social-share mt-5 pt-3 border-top border-light-subtle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                            <h6 class="fw-bold text-dark-simple mb-3">Share This Article:</h6>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL" target="_blank" class="btn btn-outline-secondary-simple rounded-pill me-2 mb-2"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
+                            <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL&text=Empowering Education: New Workshop Launched! by Your NGO Name" target="_blank" class="btn btn-outline-secondary-simple rounded-pill me-2 mb-2"><i class="fab fa-twitter me-2"></i> Twitter</a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL&title=Empowering Education: New Workshop Launched!&summary=Your NGO launched a new Digital Literacy Workshop." target="_blank" class="btn btn-outline-secondary-simple rounded-pill me-2 mb-2"><i class="fab fa-linkedin-in me-2"></i> LinkedIn</a>
+                            <a href="mailto:?subject=Read this: Empowering Education: New Workshop Launched!&body=Check out this article from Your NGO Name: YOUR_PAGE_URL" class="btn btn-outline-secondary-simple rounded-pill mb-2"><i class="fas fa-envelope me-2"></i> Email</a>
+                        </div>
+
+                        <div class="comments-section mt-5 pt-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                            <h4 class="fw-bold text-dark-simple mb-4">Comments (2)</h4>
+
+                            <div class="comment-item d-flex mb-4 p-3 border-simple rounded-3 bg-light-gray-simple">
+                                <img src="img/avatar1.png" class="comment-avatar rounded-circle me-3" alt="User Avatar">
+                                <div class="comment-body">
+                                    <h6 class="fw-bold text-dark-simple mb-1">Anil Kumar</h6>
+                                    <small class="text-muted-simple d-block mb-2">July 12, 2025 at 10:30 AM</small>
+                                    <p class="text-body-simple mb-0">
+                                        This is a fantastic initiative! Digital literacy is so crucial in today's world. Keep up the great work!
+                                    </p>
+                                    <a href="#" class="text-primary-simple small fw-bold mt-2 d-inline-block text-decoration-none hover-text-accent">Reply</a>
+                                </div>
+                            </div>
+
+                            <div class="comment-item d-flex mb-4 p-3 border-simple rounded-3 bg-light-gray-simple">
+                                <img src="img/avatar2.png" class="comment-avatar rounded-circle me-3" alt="User Avatar">
+                                <div class="comment-body">
+                                    <h6 class="fw-bold text-dark-simple mb-1">Priya Singh</h6>
+                                    <small class="text-muted-simple d-block mb-2">July 12, 2025 at 11:15 AM</small>
+                                    <p class="text-body-simple mb-0">
+                                        So inspiring to see the impact you're making. Wishing the students all the best with their new skills!
+                                    </p>
+                                    <a href="#" class="text-primary-simple small fw-bold mt-2 d-inline-block text-decoration-none hover-text-accent">Reply</a>
+                                </div>
+                            </div>
+
+                            <div class="comment-form mt-5 pt-3 border-top border-light-subtle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                                <h5 class="fw-bold text-dark-simple mb-4">Leave a Comment</h5>
+                                <form action="YOUR_COMMENT_SUBMISSION_URL" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <input type="text" class="form-control rounded-pill-custom" placeholder="Your Name" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <input type="email" class="form-control rounded-pill-custom" placeholder="Your Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control rounded-custom-textarea" rows="5" placeholder="Your Comment" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary-simple btn-lg rounded-pill-custom px-4 py-2">Post Comment <i class="fas fa-comment ms-2"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <aside class="sidebar" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                        <div class="sidebar-widget card border-simple shadow-sm rounded-4 p-4 mb-4">
+                            <h5 class="fw-bold text-dark-simple mb-3">Search News</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search..." aria-label="Search">
+                                <button class="btn btn-outline-primary-simple rounded-end-pill" type="button"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget card border-simple shadow-sm rounded-4 p-4 mb-4">
+                            <h5 class="fw-bold text-dark-simple mb-3">Recent News</h5>
+                            <ul class="list-unstyled recent-posts-list">
+                                <li class="mb-3 d-flex align-items-center">
+                                    <img src="img/news_sidebar_1.jpg" class="recent-post-img rounded-3 me-3" alt="Recent News 1">
+                                    <div>
+                                        <a href="#" class="text-dark-simple text-decoration-none fw-bold hover-text-accent d-block">Clean Water Project Success</a>
+                                        <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> June 01, 2025</small>
+                                    </div>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <img src="img/news_sidebar_2.jpg" class="recent-post-img rounded-3 me-3" alt="Recent News 2">
+                                    <div>
+                                        <a href="#" class="text-dark-simple text-decoration-none fw-bold hover-text-accent d-block">Earth Day Tree Plantation Drive</a>
+                                        <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> April 22, 2025</small>
+                                    </div>
+                                </li>
+                                <li class="mb-0 d-flex align-items-center">
+                                    <img src="img/news_sidebar_3.jpg" class="recent-post-img rounded-3 me-3" alt="Recent News 3">
+                                    <div>
+                                        <a href="#" class="text-dark-simple text-decoration-none fw-bold hover-text-accent d-block">Women Skill Development Program</a>
+                                        <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> March 15, 2025</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-widget card border-simple shadow-sm rounded-4 p-4 mb-4">
+                            <h5 class="fw-bold text-dark-simple mb-3">Categories</h5>
+                            <ul class="list-unstyled category-list">
+                                <li class="mb-2"><a href="#" class="text-muted-simple text-decoration-none hover-text-accent"><i class="fas fa-angle-right me-2"></i> Education (5)</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-simple text-decoration-none hover-text-accent"><i class="fas fa-angle-right me-2"></i> Health (3)</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-simple text-decoration-none hover-text-accent"><i class="fas fa-angle-right me-2"></i> Livelihood (4)</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-simple text-decoration-none hover-text-accent"><i class="fas fa-angle-right me-2"></i> Environment (2)</a></li>
+                                <li class="mb-0"><a href="#" class="text-muted-simple text-decoration-none hover-text-accent"><i class="fas fa-angle-right me-2"></i> Events (6)</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-widget card border-simple shadow-sm rounded-4 p-4 mb-4">
+                            <h5 class="fw-bold text-dark-simple mb-3">Tags</h5>
+                            <div class="d-flex flex-wrap tag-cloud">
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 me-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Workshop</a>
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 me-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Youth</a>
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 me-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Community</a>
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 me-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Donation</a>
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 me-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Volunteer</a>
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 me-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Impact</a>
+                                <a href="#" class="badge bg-light-gray-simple text-dark-simple rounded-pill px-3 py-2 mb-2 hover-bg-accent hover-text-white text-decoration-none">Healthcare</a>
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-off">
+        <div class="container">
+            <h3 class="text-center fw-bold mb-5 text-dark-simple" data-aos="fade-up" data-aos-duration="800">More News & Stories</h3>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_related_1.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Related News 1">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-simple text-white rounded-pill px-3 py-2 fw-normal small">News</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> June 01, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Impact Story: Clean Water Project Success</h5>
+                            <p class="card-text text-body-simple">
+                                Our clean water initiative has brought safe drinking water to over 1000 households in rural areas...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_related_2.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Related News 2">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success-simple text-white rounded-pill px-3 py-2 fw-normal small">Event</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> April 22, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Earth Day Tree Plantation Drive</h5>
+                            <p class="card-text text-body-simple">
+                                Celebrating Earth Day, we organized a massive tree plantation drive with local community participation...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">View Highlights <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_related_3.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Related News 3">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-simple text-white rounded-pill px-3 py-2 fw-normal small">News</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> March 15, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Empowering Women Through Skill Development</h5>
+                            <p class="card-text text-body-simple">
+                                Our latest batch of women entrepreneurs completed their training, ready to start their own ventures...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">Discover More <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-5">
+                <a href="news-events.html" class="btn btn-outline-primary-simple btn-lg rounded-pill px-5 py-3">Back to All News & Events <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

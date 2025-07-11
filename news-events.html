@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Add these new styles to your existing css/style.css file */
+
+/* --- News & Events Specific Styles --- */
+.news-event-card {
+    background-color: var(--white-pure);
+    border-radius: var(--border-radius-card);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-event-card .card-body {
+    flex-grow: 1; /* Ensures card body takes available space */
+}
+
+.img-fluid-cover-news {
+    width: 100%;
+    height: 200px; /* Fixed height for news/event images */
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+}
+
+.news-event-card .card-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.news-event-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--body-text-color-simple);
+}
+
+/* Badges for News/Event type */
+.badge.bg-primary-simple {
+    background-color: var(--primary-accent-strong) !important;
+}
+.badge.bg-success-simple {
+    background-color: #28a745 !important; /* A standard green for event badges */
+}
+
+/* Hidden items for Load More */
+.hidden-news-event-item {
+    display: none;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <!-- <img src="img/ngo_logo.png" alt="Your NGO Logo" class="site-logo mb-1" height="80"> -->
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon-simple"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#education">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#health">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#livelihood">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-dark-simple mb-3">News & Events</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">News & Events</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <h2 class="text-center display-5 fw-bold mb-5 text-dark-simple" data-aos="fade-up" data-aos-duration="800">Latest Updates & Upcoming Happenings</h2>
+
+            <div id="news-events-container" class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4 news-event-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_event1.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Education Workshop">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-simple text-white rounded-pill px-3 py-2 fw-normal small">News</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> July 10, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Empowering Education: New Workshop Launched!</h5>
+                            <p class="card-text text-body-simple">
+                                We are thrilled to announce the successful launch of our new "Digital Literacy for Youth" workshop in collaboration with local schools...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 news-event-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_event1.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Health Camp">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success-simple text-white rounded-pill px-3 py-2 fw-normal small">Event</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> August 15, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Free Health Check-up Camp: Join Us!</h5>
+                            <p class="card-text text-body-simple">
+                                Our annual free health check-up camp is scheduled for next month. Essential screenings and medical consultations will be available...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">View Details <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 news-event-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_event1.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Livelihood Success">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-simple text-white rounded-pill px-3 py-2 fw-normal small">News</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> June 28, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Success Story: From Training to Entrepreneurship</h5>
+                            <p class="card-text text-body-simple">
+                                Meet Radha, a beneficiary of our tailoring program who has now successfully launched her own small boutique...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">Read Story <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 news-event-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_event1.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Volunteer Meetup">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success-simple text-white rounded-pill px-3 py-2 fw-normal small">Event</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> September 5, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Annual Volunteer Appreciation Meet-up</h5>
+                            <p class="card-text text-body-simple">
+                                We're hosting our annual meet-up to celebrate our amazing volunteers! A day of fun, recognition, and planning future initiatives...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">RSVP Now <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 news-event-item hidden-news-event-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/news_event1.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Environmental Drive">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-simple text-white rounded-pill px-3 py-2 fw-normal small">News</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> May 20, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Green Initiative: Community Clean-up Drive</h5>
+                            <p class="card-text text-body-simple">
+                                Our recent environmental clean-up drive saw overwhelming community participation, making our local park spotless...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 news-event-item hidden-news-event-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 news-event-card hover-lift-simple">
+                        <img src="img/event3.jpg" class="card-img-top rounded-top-4 img-fluid-cover-news" alt="Fundraiser Gala">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success-simple text-white rounded-pill px-3 py-2 fw-normal small">Event</span>
+                                <small class="text-muted-simple"><i class="far fa-calendar-alt me-1"></i> November 10, 2025</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark-simple mb-2">Annual Fundraising Gala: A Night for Change</h5>
+                            <p class="card-text text-body-simple">
+                                Mark your calendars! Our biggest fundraising event of the year promises an evening of entertainment and impact...
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary-simple rounded-pill mt-3 px-3 py-2">Get Tickets <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <div class="text-center mt-5" id="news-events-load-more-container" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                <button id="loadMoreNewsEventsBtn" class="btn btn-outline-primary-simple btn-lg rounded-pill px-5 py-3">Load More <i class="fas fa-chevron-down ms-2"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+<script>
+    // Add this to your existing js/script.js file
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS library (keep this as it is)
+    AOS.init({
+        disable: false,
+        startEvent: 'DOMContentLoaded',
+        initClassName: 'aos-init',
+        animatedClassName: 'aos-animate',
+        useClassNames: false,
+        disableMutationObserver: false,
+        debounceDelay: 50,
+        throttleDelay: 99,
+        offset: 120,
+        delay: 0,
+        duration: 800,
+        easing: 'ease-out',
+        once: true,
+        mirror: false,
+        anchorPlacement: 'top-bottom',
+    });
+
+    // Smooth scrolling for anchor links (keep this as it is)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // --- Gallery Load More Functionality (Existing from previous step) ---
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const galleryItemsPerPage = 4; // Number of items to show initially and load more for gallery
+    let visibleGalleryItems = galleryItemsPerPage;
+
+    if (galleryItems.length > 0 && loadMoreBtn) {
+        // Initially hide all items beyond the first set for gallery
+        for (let i = galleryItemsPerPage; i < galleryItems.length; i++) {
+            galleryItems[i].classList.add('hidden-gallery-item');
+        }
+
+        // Check if there are more items to hide initially
+        if (galleryItems.length <= galleryItemsPerPage) {
+             loadMoreBtn.style.display = 'none'; // Hide button if all items are visible
+        }
+
+        loadMoreBtn.addEventListener('click', function() {
+            // Show the next set of hidden items for gallery
+            for (let i = visibleGalleryItems; i < visibleGalleryItems + galleryItemsPerPage; i++) {
+                if (galleryItems[i]) {
+                    galleryItems[i].classList.remove('hidden-gallery-item');
+                    AOS.refreshHard(); // Recalculate all positions and animate
+                }
+            }
+            visibleGalleryItems += galleryItemsPerPage;
+
+            // Hide button if all items are now visible
+            if (visibleGalleryItems >= galleryItems.length) {
+                loadMoreBtn.style.display = 'none';
+                if (document.getElementById('load-more-container')) {
+                    document.getElementById('load-more-container').remove();
+                }
+            }
+        });
+    }
+
+    // --- News & Events Load More Functionality (NEW) ---
+    const newsEventItems = document.querySelectorAll('.news-event-item');
+    const loadMoreNewsEventsBtn = document.getElementById('loadMoreNewsEventsBtn');
+    const newsEventsPerPage = 3; // Number of items to show initially and load more for news/events
+    let visibleNewsEvents = newsEventsPerPage;
+
+    if (newsEventItems.length > 0 && loadMoreNewsEventsBtn) {
+        // Initially hide all items beyond the first set for news/events
+        for (let i = newsEventsPerPage; i < newsEventItems.length; i++) {
+            newsEventItems[i].classList.add('hidden-news-event-item');
+        }
+
+        // Check if there are more items to hide initially
+        if (newsEventItems.length <= newsEventsPerPage) {
+            loadMoreNewsEventsBtn.style.display = 'none'; // Hide button if all items are visible
+        }
+
+        loadMoreNewsEventsBtn.addEventListener('click', function() {
+            // Show the next set of hidden items for news/events
+            for (let i = visibleNewsEvents; i < visibleNewsEvents + newsEventsPerPage; i++) {
+                if (newsEventItems[i]) {
+                    newsEventItems[i].classList.remove('hidden-news-event-item');
+                    AOS.refreshHard(); // Recalculate all positions and animate
+                }
+            }
+            visibleNewsEvents += newsEventsPerPage;
+
+            // Hide button if all items are now visible
+            if (visibleNewsEvents >= newsEventItems.length) {
+                loadMoreNewsEventsBtn.style.display = 'none';
+                if (document.getElementById('news-events-load-more-container')) {
+                    document.getElementById('news-events-load-more-container').remove();
+                }
+            }
+        });
+    }
+
+    // --- Lightbox Configuration (Existing from previous step) ---
+    // Lightbox's default behavior is to auto-initialize on window.load.
+    // However, if you add dynamic content, you might need to re-initiate
+    // For this setup, simply including the JS will usually be enough.
+    // If issues arise with dynamically loaded images, consider:
+    // lightbox.option({
+    //     'resizeDuration': 200,
+    //     'wrapAround': true
+    // })
+
+});
+</script>

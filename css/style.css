@@ -1,0 +1,555 @@
+:root {
+    --white-pure: #FFFFFF;
+    --white-off: #F8F8F8; 
+    --light-gray-simple: #F2F4F5; 
+    --dark-charcoal: #333333; 
+    --medium-grey: #555555;  
+    --light-muted-grey: #888888; 
+    --footer-text-color: #AAAAAA; 
+    --footer-bg-color: #222222; 
+
+
+    --subtle-accent-light: #CFD8DC; 
+    --subtle-accent-medium: #AABBC4; 
+    --primary-accent-strong: #437057; 
+    --primary-accent-hover: #437057; 
+    --font-primary: 'Inter', sans-serif;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --py-section: 6rem;
+
+    --border-radius-card: 0.75rem;
+    --border-radius-pill: 50rem;
+    --shadow-sm-simple: 0 0.125rem 0.25rem rgba(0,0,0,.05); 
+    --shadow-md-simple: 0 0.5rem 1rem rgba(0,0,0,.08);
+    --shadow-lg-simple: 0 1rem 3rem rgba(0,0,0,.12);
+    --shadow-simple: 0 0.4rem 1.2rem rgba(0,0,0,.06); 
+    --transition-speed: 0.3s;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+    /* font-family: 'MuseoSlab500Regular', arial, helvetica, sans-serif !important; */
+    font-family: ubuntu !important;
+    color: #111111;
+    line-height: 1.7;
+    color: var(--medium-grey);
+    background-color: var(--white-pure);
+    overflow-x: hidden; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    color: var(--dark-charcoal);
+    line-height: 1.3;
+}
+
+a {
+    color: var(--primary-accent-strong); /* Default link color */
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+a:hover {
+    color: var(--primary-accent-hover);
+}
+
+.container {
+    max-width: 1200px;
+}
+.py-lg-6 { padding-top: var(--py-section) !important; padding-bottom: var(--py-section) !important; }
+
+/* Custom Backgrounds */
+.top-bar-simple {
+    background-color: var(--light-gray-simple) !important;
+    border-bottom: 1px solid var(--subtle-accent-light); /* Very subtle line */
+}
+.bg-white-off { background-color: var(--white-off) !important; }
+.bg-light-gray-simple { background-color: var(--light-gray-simple) !important; }
+.bg-dark-simple { background-color: var(--footer-bg-color) !important; }
+
+
+/* Custom Text Colors */
+.text-dark-simple { color: var(--dark-charcoal) !important; }
+.text-body-simple { color: var(--medium-grey) !important; }
+.text-muted-simple { color: var(--light-muted-grey) !important; }
+.text-muted-footer-simple { color: var(--footer-text-color) !important; }
+
+.hover-text-accent:hover { color: var(--primary-accent-strong) !important; }
+.hover-text-accent-footer:hover { color: var(--primary-accent-strong) !important; }
+
+/* --- Buttons --- */
+.btn {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-primary-simple {
+    background-color: var(--primary-accent-strong) !important;
+    border-color: var(--primary-accent-strong) !important;
+    color: var(--white-pure) !important;
+}
+.btn-primary-simple:hover {
+    background-color: var(--primary-accent-hover) !important;
+    border-color: var(--primary-accent-hover) !important;
+    box-shadow: var(--shadow-md-simple) !important;
+}
+
+.btn-outline-primary-simple {
+    background-color: transparent !important;
+    border-color: var(--primary-accent-strong) !important;
+    color: var(--primary-accent-strong) !important;
+}
+.btn-outline-primary-simple:hover {
+    background-color: var(--primary-accent-strong) !important;
+    color: var(--white-pure) !important;
+    box-shadow: var(--shadow-md-simple) !important;
+}
+
+.btn-outline-secondary-simple { /* Used for "Read More" on cards */
+    background-color: transparent !important;
+    border-color: var(--subtle-accent-light) !important;
+    color: var(--light-muted-grey) !important;
+}
+.btn-outline-secondary-simple:hover {
+    background-color: var(--light-gray-simple) !important;
+    border-color: var(--subtle-accent-medium) !important;
+    color: var(--dark-charcoal) !important;
+    box-shadow: var(--shadow-sm-simple) !important;
+}
+
+.btn-outline-light-simple { /* Used for 'Become a Volunteer' on dark CTA */
+    background-color: transparent !important;
+    border-color: var(--white-pure) !important;
+    color: var(--white-pure) !important;
+}
+.btn-outline-light-simple:hover {
+    background-color: var(--white-pure) !important;
+    color: var(--dark-charcoal) !important;
+    box-shadow: var(--shadow-md-simple) !important;
+}
+
+/* Shadow Hover for Buttons */
+.shadow-sm-hover:hover { box-shadow: var(--shadow-md-simple) !important; }
+.shadow-lg-hover:hover { box-shadow: var(--shadow-lg-simple) !important; }
+
+
+/* --- Main Header --- */
+.main-header {
+    background-color: var(--white-pure);
+    border-bottom: 1px solid var(--subtle-accent-light); /* Subtle separator */
+}
+.header-search .search-group .form-control {
+    border-color: var(--subtle-accent-light);
+}
+.header-search .search-group .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, .1); /* Light focus glow */
+    border-color: var(--primary-accent-strong);
+}
+
+.site-logo {
+    border-radius: 8px; /* Slightly rounded logo */
+}
+
+.header-contact .card {
+    background-color: var(--white-pure) !important; /* Keep contact card white */
+    border: 1px solid var(--subtle-accent-light) !important; /* Subtle border */
+    box-shadow: var(--shadow-sm-simple) !important;
+}
+.icon-circle-simple {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    background-color: var(--light-gray-simple); /* Simple background */
+    color: var(--dark-charcoal); /* Dark icon color */
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); /* Very subtle inner shadow/border */
+}
+.icon-circle-simple.bg-light-accent { /* specific for this one */
+    background-color: var(--light-gray-simple) !important;
+}
+
+
+/* --- Main Navigation Bar --- */
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark-charcoal);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 12px;
+    position: relative;
+    transition: all var(--transition-speed) ease;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active-simple { /* Custom active state */
+    color: var(--primary-accent-strong); /* Strong accent on hover/active */
+}
+.navbar-light .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary-accent-strong);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    transition: width var(--transition-speed) ease-in-out;
+}
+.navbar-light .navbar-nav .nav-link:hover::after,
+.navbar-light .navbar-nav .nav-link.active-simple::after {
+    width: 100%;
+}
+
+/* Dropdown specific styles */
+.navbar .dropdown-menu {
+    border: 1px solid var(--subtle-accent-light);
+    box-shadow: var(--shadow-md-simple);
+    border-radius: var(--border-radius-card);
+    background-color: var(--white-pure);
+}
+.navbar .dropdown-item {
+    color: var(--dark-charcoal);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+.navbar .dropdown-item.hover-bg-light:hover {
+    background-color: var(--white-off);
+    color: var(--primary-accent-strong);
+}
+.animate-fade-in-down { /* For subtle dropdown animation */
+    animation: fadeInDown .3s ease-out;
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar-toggler-icon-simple { /* Custom toggler icon to match theme */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23333333' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* --- Hero Carousel Section --- */
+.hero-carousel-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 600px; /* Set a fixed height for carousel items */
+    background-color: var(--white-off); /* Fallback background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Ensure image doesn't overflow */
+}
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; /* Cover the entire container */
+    filter: brightness(0.7); /* Slightly darken image for text readability */
+    transition: transform 0.8s ease-in-out; /* Smooth zoom effect */
+}
+.carousel-item.active .carousel-img {
+    transform: scale(1.03); /* Subtle zoom on active slide */
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.3); /* Semi-transparent overlay for text readability */
+    text-align: center;
+    color: var(--white-pure); /* White text on dark overlay */
+}
+
+.carousel-caption h5 {
+    color: var(--white-pure);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 3.5rem;
+}
+.carousel-caption p.lead {
+    color: var(--white-pure);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    font-size: 1.75rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.5); /* Darker controls for visibility */
+    border-radius: 50%;
+    padding: 15px;
+    transition: background-color var(--transition-speed) ease;
+}
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: var(--primary-accent-strong); /* Accent color on hover */
+}
+
+
+/* --- Floating Contact Buttons --- */
+.floating-contact-buttons {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+.floating-contact-buttons .btn-floating-simple {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-pure) !important;
+    background-color: var(--primary-accent-strong) !important;
+    border-color: var(--primary-accent-strong) !important;
+    box-shadow: var(--shadow-md-simple);
+}
+.floating-contact-buttons .btn-floating-simple:hover {
+    background-color: var(--primary-accent-hover) !important;
+    border-color: var(--primary-accent-hover) !important;
+    box-shadow: var(--shadow-lg-simple);
+}
+
+/* Subtle bounce animation for floating buttons */
+@keyframes bounceSubtle {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-2px); }
+}
+.animate-bounce-subtle { animation: bounceSubtle 2s infinite; }
+.floating-contact-buttons .btn:nth-child(2) { animation-delay: 0.1s; }
+
+
+/* --- Section: Our Mission --- */
+.shadow-simple {
+    box-shadow: var(--shadow-simple) !important;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.shadow-simple:hover {
+    box-shadow: 0 0.6rem 1.8rem rgba(0,0,0,.09) !important;
+    transform: translateY(-2px);
+}
+.img-fluid-cover {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* --- Program/Impact Cards --- */
+.custom-card-modern {
+    border-radius: var(--border-radius-card) !important;
+    background-color: var(--white-pure);
+}
+.border-simple {
+    border: 1px solid var(--subtle-accent-light) !important;
+}
+.hover-lift-simple:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md-simple);
+}
+.icon-box-modern-simple {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: var(--light-gray-simple);
+    color: var(--dark-charcoal);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+
+/* --- Call to Action (CTA) Section --- */
+.cta-section {
+    /* Use a darker overlay or slightly darker base for strong contrast */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/cta_background.jpg') no-repeat center center/cover;
+    color: var(--white-pure);
+    padding: var(--py-section) 0;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.cta-section h2, .cta-section p.lead {
+    color: var(--white-pure) !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+.shadow-lg-hover:hover {
+    box-shadow: var(--shadow-lg-simple) !important;
+    transform: scale(1.02); /* Gentle scale on hover for CTA buttons */
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    padding-top: var(--py-section);
+    padding-bottom: 30px;
+}
+.footer-heading-simple {
+    color: var(--white-pure);
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+.footer-heading-simple::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-accent-strong); /* Blue accent in footer */
+    left: 0;
+    bottom: 0;
+    border-radius: 5px;
+}
+.footer-links li a {
+    color: var(--footer-text-color);
+    transition: all var(--transition-speed) ease;
+    padding: 6px 0;
+    display: block;
+}
+.footer-links li a:hover {
+    color: var(--white-pure);
+    transform: translateX(5px);
+}
+.footer-contact-link, .footer-legal-link {
+    color: var(--footer-text-color) !important;
+    transition: color var(--transition-speed) ease;
+}
+.footer-contact-link:hover, .footer-legal-link:hover {
+    color: var(--primary-accent-strong) !important; /* Blue accent in footer contact */
+}
+footer .social-icons a {
+    color: var(--footer-text-color);
+    margin-right: 20px;
+    font-size: 2rem;
+    transition: all var(--transition-speed) ease;
+}
+footer .social-icons a:hover {
+    color: var(--primary-accent-strong); /* Blue social icon hover */
+    transform: translateY(-5px) scale(1.1);
+}
+
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+    .header-search, .header-logo, .header-contact {
+        order: unset;
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--bs-gutter-y);
+    }
+    .header-logo { order: 1; }
+    .header-search { order: 2; }
+    .header-contact { justify-content: center; order: 3;}
+
+    .navbar-collapse {
+        background-color: var(--white-pure); /* Collapsed menu is white */
+        border-radius: 8px;
+        box-shadow: var(--shadow-sm-simple);
+        padding: 15px;
+        margin-top: 10px;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        margin: 0; padding: 10px 15px; text-align: center;
+    }
+    .navbar-light .navbar-nav .nav-link::after { display: none; }
+    .navbar .dropdown-menu {
+        position: static; box-shadow: none; border: none;
+        background-color: var(--white-off); /* Slightly off-white for nested */
+        padding: 0; margin-top: 5px;
+    }
+    .navbar .dropdown-item {
+        color: var(--dark-charcoal); padding: 8px 30px;
+    }
+    .navbar .dropdown-item:hover { background-color: var(--light-gray-simple); }
+
+    .carousel-item { height: 450px; } /* Adjust carousel height for smaller screens */
+    .carousel-caption h5 { font-size: 2.5rem; }
+    .carousel-caption p.lead { font-size: 1.2rem; }
+
+    .floating-contact-buttons { bottom: 20px; left: 10px; }
+
+    .footer-heading-simple { text-align: center; width: auto; }
+    .footer-heading-simple::after { left: 50%; transform: translateX(-50%); }
+    footer .footer-links { text-align: center; padding-left: 0; }
+    footer .footer-links li a { display: inline-block; margin: 5px 10px; }
+    footer .social-icons { text-align: center; margin-top: 20px; }
+}
+
+@media (max-width: 767.98px) {
+    .carousel-item { height: 350px; }
+    .carousel-caption h5 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .carousel-caption p.lead { font-size: 0.95rem; margin-bottom: 1rem; }
+    .carousel-caption .btn-lg { padding: 0.75rem 2rem; font-size: 0.9rem;}
+
+    .display-5 { font-size: 2rem; }
+    .display-4 { font-size: 2.2rem; }
+    .card-title { font-size: 1.1rem !important; }
+
+    .floating-contact-buttons .btn { width: 50px; height: 50px; font-size: 1.2rem; }
+}
+
+
+@media (max-width: 740px) {
+    footer .footer-links {
+        text-align: left !important;
+        padding-left: 0 !important;
+    }
+
+
+    footer .footer-links li a {
+        margin: 0 !important;
+    }
+
+    footer .social-icons a i{
+    font-size: 15px;
+    }
+
+    footer .social-icons{
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    #custom-btn2{
+        margin-top: 10px;
+        width: 100%;
+        font-size: 14px !important;
+    }
+
+    #custom-btn{
+        
+        width: 100%;
+        font-size: 14px !important;
+    }
+}

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your NGO - About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+
+    <style>
+        /* Custom Styles for About Page Enhancements */
+
+        /* 1. Card Hover Effect (Bottom Half Transparent White Animation) */
+        .custom-card-modern {
+            position: relative; /* Needed for absolute positioning of pseudo-element */
+            overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+            z-index: 1; /* Ensures content stays above the overlay */
+        }
+
+        .custom-card-modern::before { /* Using ::before for the overlay */
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0; /* Starts hidden */
+            /* Gradient from transparent white to slightly more opaque white */
+            background: linear-gradient(to top, rgba(255,255,255,0.85), rgba(255,255,255,0.4));
+            opacity: 0; /* Starts fully transparent */
+            transition: all 0.4s ease-out; /* Smooth transition */
+            z-index: 2; /* Place above card content */
+            pointer-events: none; /* Allows clicks to pass through the overlay */
+        }
+
+        .custom-card-modern:hover::before {
+            height: 70%; /* Covers bottom 70% of the card on hover */
+            opacity: 1; /* Fully visible */
+        }
+
+        /* To ensure text and buttons are clickable and visible *above* the pseudo-element overlay */
+        .custom-card-modern .card-body,
+        .custom-card-modern .card-img-top {
+            position: relative;
+            z-index: 3; /* Make sure card content is above the overlay */
+        }
+
+        /* 2. About Main Header Content Borders (Left/Right, 2 lines, beautified) */
+        .about-main-content-wrapper {
+            position: relative;
+            padding: 20px 40px; /* Add padding to make space for the vertical lines */
+        }
+
+        .about-main-content-wrapper::before,
+        .about-main-content-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 2px; /* Thickness of the primary line */
+            background-color: var(--primary-simple); /* Your primary color */
+            opacity: 0.9;
+        }
+
+        .about-main-content-wrapper::before { /* Left lines */
+            left: 15px; /* Position of the main left line */
+            box-shadow: 10px 0 0 0 rgba(var(--primary-rgb), 0.3); /* Second, lighter line offset by 10px */
+        }
+
+        .about-main-content-wrapper::after { /* Right lines */
+            right: 15px; /* Position of the main right line */
+            box-shadow: -10px 0 0 0 rgba(var(--primary-rgb), 0.3); /* Second, lighter line offset by 10px */
+        }
+
+        /* Responsive adjustments for borders */
+        @media (max-width: 991.98px) { /* Adjust for smaller screens where layout changes */
+            .about-main-content-wrapper {
+                padding: 0; /* Remove custom padding, let Bootstrap columns handle it */
+            }
+            .about-main-content-wrapper::before,
+            .about-main-content-wrapper::after {
+                content: none; /* Hide vertical lines on smaller screens if they cause issues */
+            }
+        }
+
+
+    /* Custom Styles for About Page Enhancements */
+
+    /* 1. Card Hover Effect (Bottom Half Transparent White Animation) */
+    .custom-card-modern {
+        position: relative; /* Needed for absolute positioning of pseudo-element */
+        overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+        z-index: 1; /* Ensures content stays above the overlay */
+    }
+
+    .custom-card-modern::before { /* Using ::before for the overlay */
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0; /* Starts hidden */
+        /* Gradient from transparent white to slightly more opaque white */
+        background: linear-gradient(to top, rgba(255,255,255,0.85), rgba(255,255,255,0.4));
+        opacity: 0; /* Starts fully transparent */
+        transition: all 0.4s ease-out; /* Smooth transition */
+        z-index: 2; /* Place above card content */
+        pointer-events: none; /* Allows clicks to pass through the overlay */
+    }
+
+    .custom-card-modern:hover::before {
+        height: 70%; /* Covers bottom 70% of the card on hover */
+        opacity: 1; /* Fully visible */
+    }
+
+    /* To ensure text and buttons are clickable and visible *above* the pseudo-element overlay */
+    .custom-card-modern .card-body,
+    .custom-card-modern .card-img-top {
+        position: relative;
+        z-index: 3; /* Make sure card content is above the overlay */
+    }
+
+    /* 2. About Main Header Content Borders (Left/Right, 2 lines, beautified) */
+    .about-main-content-wrapper {
+        position: relative;
+        padding: 20px 40px; /* Add padding to make space for the vertical lines */
+    }
+
+    .about-main-content-wrapper::before,
+    .about-main-content-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 2px; /* Thickness of the primary line */
+        /* सीधे रंग का उपयोग करें यदि आपकी CSS वेरिएबल्स परिभाषित नहीं हैं */
+        background-color: #007bff; /* उदाहरण के लिए, एक नीला रंग */
+        opacity: 0.9;
+    }
+
+    .about-main-content-wrapper::before { /* Left lines */
+        left: 15px; /* Position of the main left line */
+        /* सीधे रंग का उपयोग करें यदि आपकी CSS वेरिएबल्स परिभाषित नहीं हैं */
+        box-shadow: 10px 0 0 0 rgba(0, 123, 255, 0.3); /* दूसरा, हल्का लाइन ऑफसेट */
+    }
+
+    .about-main-content-wrapper::after { /* Right lines */
+        right: 15px; /* Position of the main right line */
+        /* सीधे रंग का उपयोग करें यदि आपकी CSS वेरिएबल्स परिभाषित नहीं हैं */
+        box-shadow: -10px 0 0 0 rgba(0, 123, 255, 0.3); /* दूसरा, हल्का लाइन ऑफसेट */
+    }
+
+    /* Responsive adjustments for borders */
+    @media (max-width: 991.98px) { /* Adjust for smaller screens where layout changes */
+        .about-main-content-wrapper {
+            padding: 0; /* Remove custom padding, let Bootstrap columns handle it */
+        }
+        .about-main-content-wrapper::before,
+        .about-main-content-wrapper::after {
+            content: none; /* Hide vertical lines on smaller screens if they cause issues */
+        }
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0 mt-3">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="">
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler shadow-none outline-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                   <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#education">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#health">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#livelihood">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-dark-simple mb-3">About Us</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">About Us</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section id="mission" class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <div class="row align-items-center gx-5">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="img/about.jpg" class="img-fluid rounded-4 shadow-simple" alt="Our Story Image">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="about-main-content-wrapper">
+                        <h2 class="display-5 fw-bold mb-4 text-dark-simple">Our Story & What Drives Us</h2>
+                        <p class="lead text-body-simple">
+                            **Your NGO Name** began with a simple belief: that every individual, regardless of their circumstances, deserves the opportunity to thrive.
+                        </p>
+                        <p class="text-muted-simple">
+                            Founded in [Year], we embarked on a journey to empower marginalized communities through sustainable initiatives. What started as a small group of passionate volunteers has grown into a strong network making a tangible impact in education, health, and livelihood.
+                        </p>
+                        <h3 class="h4 fw-bold mt-4 mb-3 text-dark-simple">Our Mission</h3>
+                        <p class="text-muted-simple">
+                            To empower underserved communities by providing access to quality education, healthcare, and sustainable livelihood opportunities, fostering self-reliance and dignity.
+                        </p>
+                        <h3 class="h4 fw-bold mt-4 mb-3 text-dark-simple">Our Vision</h3>
+                        <p class="text-muted-simple">
+                            A world where every individual has the resources and opportunities to achieve their full potential, contributing to a just, equitable, and sustainable society.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="py-5 py-lg-6 bg-white-off">
+        <div class="container">
+            <h2 class="text-center display-5 fw-bold mb-5 text-dark-simple" data-aos="fade-up" data-aos-duration="800">Our Core Values</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center hover-lift-simple">
+                        <div class="card-body p-4">
+                            <div class="icon-box-modern-simple bg-light-gray-simple text-dark-simple mb-3 mx-auto"><i class="fas fa-hand-holding-heart fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-2 text-dark-simple">Compassion</h5>
+                            <p class="card-text text-muted-simple">Empathy and care guide every action, ensuring we respond to needs with genuine concern.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center hover-lift-simple">
+                        <div class="card-body p-4">
+                            <div class="icon-box-modern-simple bg-light-gray-simple text-dark-simple mb-3 mx-auto"><i class="fas fa-seedling fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-2 text-dark-simple">Sustainability</h5>
+                            <p class="card-text text-muted-simple">Building long-term solutions that empower communities to thrive independently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center hover-lift-simple">
+                        <div class="card-body p-4">
+                            <div class="icon-box-modern-simple bg-light-gray-simple text-dark-simple mb-3 mx-auto"><i class="fas fa-fist-raised fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-2 text-dark-simple">Empowerment</h5>
+                            <p class="card-text text-muted-simple">Fostering self-reliance by equipping individuals with knowledge and skills.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center hover-lift-simple">
+                        <div class="card-body p-4">
+                            <div class="icon-box-modern-simple bg-light-gray-simple text-dark-simple mb-3 mx-auto"><i class="fas fa-users fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-2 text-dark-simple">Community Focus</h5>
+                            <p class="card-text text-muted-simple">Working collaboratively with local communities to ensure relevant and impactful solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center hover-lift-simple">
+                        <div class="card-body p-4">
+                            <div class="icon-box-modern-simple bg-light-gray-simple text-dark-simple mb-3 mx-auto"><i class="fas fa-hand-holding-usd fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-2 text-dark-simple">Transparency</h5>
+                            <p class="card-text text-muted-simple">Operating with openness and accountability in all our programs and financial dealings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <h2 class="text-center display-5 fw-bold mb-5 text-dark-simple" data-aos="fade-up" data-aos-duration="800">Meet Our Dedicated Team</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center team-card hover-lift-simple">
+                        <img src="img/profession.avif" class="card-img-top rounded-top-4 img-fluid-cover-sm" alt="Team Member 1">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark-simple">Ravi Sharma</h5>
+                            <p class="text-muted-simple small mb-3">Founder & CEO</p>
+                            <p class="card-text text-body-simple">With over 15 years in social development, Ravi leads our vision for a better future.</p>
+                            <div class="social-icons-sm mt-3">
+                                <a href="#" class="text-dark-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark-simple me-3 hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="text-dark-simple hover-text-accent"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center team-card hover-lift-simple">
+                        <img src="img/profession.avif" class="card-img-top rounded-top-4 img-fluid-cover-sm" alt="Team Member 2">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark-simple">Priya Singh</h5>
+                            <p class="text-muted-simple small mb-3">Head of Programs</p>
+                            <p class="card-text text-body-simple">Priya designs and oversees all our community programs with a focus on impact.</p>
+                            <div class="social-icons-sm mt-3">
+                                <a href="#" class="text-dark-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark-simple me-3 hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="text-dark-simple hover-text-accent"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 custom-card-modern text-center team-card hover-lift-simple">
+                        <img src="img/profession.avif" class="card-img-top rounded-top-4 img-fluid-cover-sm" alt="Team Member 3">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark-simple">Amit Kumar</h5>
+                            <p class="text-muted-simple small mb-3">Community Engagement Lead</p>
+                            <p class="card-text text-body-simple">Amit builds strong relationships with local communities and partners.</p>
+                            <div class="social-icons-sm mt-3">
+                                <a href="#" class="text-dark-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-dark-simple me-3 hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="text-dark-simple hover-text-accent"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <a href="contact.html" class="btn btn-outline-primary-simple btn-lg rounded-pill px-5 py-3">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS library
+    AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: 'aos-init', // class applied after initialization
+        animatedClassName: 'aos-animate', // class applied on animation
+        useClassNames: false, // if true, will add `aos-*` classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+
+        // Settings that can be overridden per element via `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 800, // values from 0 to 3000, with step 50ms
+        easing: 'ease-out', // default easing for AOS animations
+        once: true, // whether animation should happen only once - default
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element should trigger the animation
+
+    });
+
+    // Smooth scrolling for anchor links (if any)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add 'scrolled' class to navbar on scroll for styling changes (optional)
+    // const mainNavbar = document.querySelector('.main-header'); // or the sticky nav
+    // if (mainNavbar) {
+    //  window.addEventListener('scroll', function() {
+    //      if (window.scrollY > 50) { // Adjust scroll threshold as needed
+    //          // mainNavbar.classList.add('scrolled'); // Add CSS for .scrolled
+    //      } else {
+    //          // mainNavbar.classList.remove('scrolled');
+    //      }
+    //  });
+    // }
+});
+</script>

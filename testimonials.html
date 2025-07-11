@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+        /* Add these new styles to your existing css/style.css file */
+
+/* --- Testimonial Specific Styles --- */
+.testimonial-card {
+    background-color: var(--white-pure);
+    border-radius: var(--border-radius-card);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    padding: 20px; /* Adjust padding as needed */
+    display: flex; /* Use flexbox to make content centered vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-img {
+    width: 90px; /* Size of testimonial image */
+    height: 90px; /* Size of testimonial image */
+    object-fit: cover;
+    object-position: center;
+    border-color: var(--primary-accent-light) !important; /* Accent border */
+}
+
+.testimonial-card .card-text {
+    font-size: 0.95rem; /* Adjust font size for quote */
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Optional: Adjust star color if not already defined */
+.text-warning-simple {
+    color: #ffc107; /* Standard Bootstrap warning color for stars */
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-simple text-muted py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-bar-left">
+                <i class="fas fa-handshake me-2"></i> Welcome to Your NGO! Together, we make a difference.
+            </div>
+            <div class="top-bar-right d-flex align-items-center">
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-muted-simple me-3 hover-text-accent"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-muted-simple hover-text-accent"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header py-3 bg-white shadow-sm">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="header-search d-flex order-2 order-lg-1 mb-3 mb-lg-0 w-100 w-lg-auto justify-content-center justify-content-lg-start">
+                <div class="input-group search-group">
+                    <input type="text" class="form-control rounded-start-pill border-light-subtle" placeholder="Search Our Programs..." aria-label="Search Programs">
+                    <button class="btn btn-outline-primary-simple rounded-end-pill" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="header-logo order-1 order-lg-2 mx-auto mb-3 mb-lg-0">
+                <a class="navbar-brand d-flex flex-column align-items-center" href="index.html">
+                    <img src="img/ngo_logo.png" alt="Your NGO Logo" class="site-logo mb-1" height="80">
+                    <span class="fw-bold fs-5 text-dark-simple">Your NGO Name</span>
+                </a>
+            </div>
+
+            <div class="header-contact d-flex align-items-center order-3 order-lg-3 mx-auto mx-lg-0">
+                <div class="card border-0 shadow-sm rounded-pill py-2 px-4 d-flex flex-row align-items-center bg-light-gray-simple">
+                    <div class="icon-circle-simple bg-light-accent text-dark-simple me-3">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <small class="text-muted-simple d-block">Call Us</small>
+                        <a href="tel:+919808791500" class="fw-bold text-dark-simple text-decoration-none">9808791500</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 sticky-top shadow-sm-simple">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon-simple"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABOUT US
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#team">Our Team</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="about.html#values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-simple" href="#" id="ourWorkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OUR WORK
+                        </a>
+                        <ul class="dropdown-menu animate-fade-in-down" aria-labelledby="ourWorkDropdown">
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#education">Education Initiatives</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#health">Health Programs</a></li>
+                            <li><a class="dropdown-item text-dark-simple hover-bg-light" href="programs.html#livelihood">Livelihood Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="gallery.html">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active-simple" aria-current="page" href="testimonials.html">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="news-events.html">NEWS & EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark-simple hover-text-accent" href="contact.html">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-title-section py-5 bg-white-off text-center" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-dark-simple mb-3">Our Testimonials</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted-simple hover-text-accent">Home</a></li>
+                    <li class="breadcrumb-item active text-dark-simple" aria-current="page">Testimonials</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-white-pure">
+        <div class="container">
+            <h2 class="text-center display-5 fw-bold mb-5 text-dark-simple" data-aos="fade-up" data-aos-duration="800">Voices of Impact</h2>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 testimonial-card hover-lift-simple">
+                        <div class="card-body p-4 text-center">
+                            <img src="img/profession.avif" alt="Person 1" class="testimonial-img rounded-circle mb-3 border border-3 border-light-accent">
+                            <h5 class="fw-bold mb-1 text-dark-simple">Anjali Devi</h5>
+                            <p class="text-muted-simple small mb-3">Beneficiary - Education Program</p>
+                            <p class="card-text text-body-simple fst-italic">
+                                <i class="fas fa-quote-left text-primary-simple me-2"></i>
+                                "Your NGO changed my daughter's life. She can now read and write, and dreams of becoming a teacher. Thank you for giving her a future."
+                                <i class="fas fa-quote-right text-primary-simple ms-2"></i>
+                            </p>
+                            <div class="text-warning-simple mt-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 testimonial-card hover-lift-simple">
+                        <div class="card-body p-4 text-center">
+                            <img src="img/profession.avif" alt="Person 2" class="testimonial-img rounded-circle mb-3 border border-3 border-light-accent">
+                            <h5 class="fw-bold mb-1 text-dark-simple">Dr. Rajesh Kumar</h5>
+                            <p class="text-muted-simple small mb-3">Partner Doctor - Health Initiative</p>
+                            <p class="card-text text-body-simple fst-italic">
+                                <i class="fas fa-quote-left text-primary-simple me-2"></i>
+                                "Working with this NGO has been an incredibly rewarding experience. Their dedication to rural healthcare is truly inspiring and makes a real difference."
+                                <i class="fas fa-quote-right text-primary-simple ms-2"></i>
+                            </p>
+                            <div class="text-warning-simple mt-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 testimonial-card hover-lift-simple">
+                        <div class="card-body p-4 text-center">
+                            <img src="img/profession.avif" alt="Person 3" class="testimonial-img rounded-circle mb-3 border border-3 border-light-accent">
+                            <h5 class="fw-bold mb-1 text-dark-simple">Suresh Patil</h5>
+                            <p class="text-muted-simple small mb-3">Beneficiary - Livelihood Project</p>
+                            <p class="card-text text-body-simple fst-italic">
+                                <i class="fas fa-quote-left text-primary-simple me-2"></i>
+                                "The skill training provided helped me start my own small business. I am now able to support my family with dignity. Highly recommend their work."
+                                <i class="fas fa-quote-right text-primary-simple ms-2"></i>
+                            </p>
+                            <div class="text-warning-simple mt-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 testimonial-card hover-lift-simple">
+                        <div class="card-body p-4 text-center">
+                            <img src="img/profession.avif" alt="Person 4" class="testimonial-img rounded-circle mb-3 border border-3 border-light-accent">
+                            <h5 class="fw-bold mb-1 text-dark-simple">Meena Sharma</h5>
+                            <p class="text-muted-simple small mb-3">Volunteer</p>
+                            <p class="card-text text-body-simple fst-italic">
+                                <i class="fas fa-quote-left text-primary-simple me-2"></i>
+                                "Volunteering here has opened my eyes to the real challenges faced by many. The team is dedicated, and I feel proud to be part of such a noble cause."
+                                <i class="fas fa-quote-right text-primary-simple ms-2"></i>
+                            </p>
+                            <div class="text-warning-simple mt-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 testimonial-card hover-lift-simple">
+                        <div class="card-body p-4 text-center">
+                            <img src="img/profession.avif" alt="Person 5" class="testimonial-img rounded-circle mb-3 border border-3 border-light-accent">
+                            <h5 class="fw-bold mb-1 text-dark-simple">Rohan Gupta</h5>
+                            <p class="text-muted-simple small mb-3">Donor</p>
+                            <p class="card-text text-body-simple fst-italic">
+                                <i class="fas fa-quote-left text-primary-simple me-2"></i>
+                                "I've been donating for years, and every report shows clear impact. Their transparency and effective use of funds make me trust them completely."
+                                <i class="fas fa-quote-right text-primary-simple ms-2"></i>
+                            </p>
+                            <div class="text-warning-simple mt-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+                    <div class="card h-100 border-simple shadow-sm rounded-4 testimonial-card hover-lift-simple">
+                        <div class="card-body p-4 text-center">
+                            <img src="img/profession.avif" alt="Person 6" class="testimonial-img rounded-circle mb-3 border border-3 border-light-accent">
+                            <h5 class="fw-bold mb-1 text-dark-simple">Sapna Devi</h5>
+                            <p class="text-muted-simple small mb-3">Beneficiary - Health Program</p>
+                            <p class="card-text text-body-simple fst-italic">
+                                <i class="fas fa-quote-left text-primary-simple me-2"></i>
+                                "The free health check-up camp saved my husband's life. We are eternally grateful for the support and timely medical advice."
+                                <i class="fas fa-quote-right text-primary-simple ms-2"></i>
+                            </p>
+                            <div class="text-warning-simple mt-3">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+             <div class="text-center mt-5" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">
+                <a href="contact.html" class="btn btn-outline-primary-simple btn-lg rounded-pill px-5 py-3">Share Your Story <i class="fas fa-comment-dots ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center text-white py-5 py-lg-6" data-aos="fade-in" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up" data-aos-duration="1000">Your Support Fuels Our Mission!</h2>
+            <p class="lead mb-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Every contribution directly transforms lives and builds stronger, healthier communities. Partner with us today.
+            </p>
+            <a href="donate.html" class="btn btn-primary-simple btn-lg me-3 rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                Donate Now <i class="fas fa-heart ms-2"></i>
+            </a>
+            <a href="volunteer.html" class="btn btn-outline-light-simple btn-lg rounded-pill px-5 py-3 shadow-lg-hover" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                Become a Volunteer <i class="fas fa-hands-helping ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-dark-simple text-white py-5 py-lg-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">About Our Cause</h5>
+                    <p class="text-muted-footer-simple small">
+                        Your NGO Name is dedicated to empowering vulnerable communities through sustainable initiatives in education, health, and livelihood.
+                    </p>
+                    <a href="about.html" class="text-white text-decoration-none small-link-custom hover-text-accent-footer">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="about.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> About Us</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Our Work</a></li>
+                        <li><a href="donate.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Donate</a></li>
+                        <li><a href="volunteer.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Volunteer</a></li>
+                        <li><a href="news-events.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> News & Events</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none hover-text-accent-footer"><i class="fas fa-angle-right me-2"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3 footer-heading-simple">Connect With Us</h5>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Main Street, Anytown, State, 123456, India</p>
+                    <p class="text-muted-footer-simple mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@yourngoname.org" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">info@yourngoname.org</a></p>
+                    <p class="text-muted-footer-simple mb-4"><i class="fas fa-phone me-2"></i> <a href="tel:+911234567890" class="text-white text-decoration-none footer-contact-link hover-text-accent-footer">+91-12345 67890</a></p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3 hover-text-accent-footer"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white hover-text-accent-footer"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-light-subtle opacity-25">
+            <div class="text-center text-muted-footer-simple small">
+                <p>&copy; 2025 Your NGO Name. All Rights Reserved. <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none footer-legal-link hover-text-accent-footer">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

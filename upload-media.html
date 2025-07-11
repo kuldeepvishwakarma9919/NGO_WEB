@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Media - Admin Panel - Your NGO Name</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5Kw5i0T9g/Sj+HAAwKl0Ffbc+qrNAq5JXZQoqmt/Fw54dO4bKbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="dashboard/style.css">
+    <style>
+        /* Add or override styles specific to this upload media page */
+
+        .upload-container-admin {
+            background-color: var(--white-pure);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--light-border);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            background-color: var(--white-off);
+        }
+        .drop-zone:hover,
+        .drop-zone.drag-over {
+            background-color: rgba(var(--primary-rgb), 0.05);
+            border-color: var(--primary-accent-light);
+        }
+        .drop-zone .icon {
+            font-size: 3rem;
+            color: var(--primary-simple);
+            margin-bottom: 15px;
+        }
+        .drop-zone p {
+            margin-bottom: 5px;
+            color: var(--text-color-medium);
+        }
+        .drop-zone small {
+            color: var(--text-color-light);
+        }
+
+        /* Hide default file input */
+        #mediaFileInput {
+            display: none;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            border-top: 1px solid var(--light-border);
+            padding-top: 20px;
+        }
+
+        .preview-item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 1px solid var(--light-border);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--white-off);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preview-item img,
+        .preview-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preview-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(var(--danger-rgb), 0.8);
+            color: var(--white-pure);
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .preview-item:hover .remove-btn {
+            opacity: 1;
+        }
+        .preview-item .file-icon {
+            font-size: 3rem;
+            color: var(--primary-accent-light);
+        }
+
+        .form-control.rounded-pill-custom,
+        .form-select.rounded-pill-custom {
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid var(--light-border);
+            box-shadow: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control.rounded-pill-custom:focus,
+        .form-select.rounded-pill-custom:focus {
+            border-color: var(--primary-accent-light);
+            box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.15);
+        }
+
+        .form-control.rounded-custom-textarea {
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            border: 1px solid var(--light-border);
+            box-shadow: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-control.rounded-custom-textarea:focus {
+            border-color: var(--primary-accent-light);
+            box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <div class="bg-dark-sidebar border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white p-4 text-center border-bottom border-secondary-subtle">
+                <a href="index.html" class="text-white text-decoration-none fw-bold fs-5 d-block">Your NGO Admin</a>
+                <small class="text-muted">Dashboard</small>
+            </div>
+            <div class="list-group list-group-flush pt-2">
+                <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                </a>
+                <a href="donation-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-hand-holding-usd me-2"></i> Donations
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-users me-2"></i> Volunteers
+                </a>
+                <a href="news-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-newspaper me-2"></i> News & Events
+                </a>
+                <a href="gallery-list.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white active-sidebar py-3">
+                    <i class="fas fa-images me-2"></i> Gallery
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-comments me-2"></i> Testimonials
+                </a>
+                <a href="settings.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3">
+                    <i class="fas fa-cogs me-2"></i> Settings
+                </a>
+                <a href="login.html" class="list-group-item list-group-item-action bg-dark-sidebar text-white py-3 mt-auto">
+                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                </a>
+            </div>
+        </div>
+        <div id="page-content-wrapper" class="bg-light-gray-simple">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm-simple py-3">
+                <div class="container-fluid">
+                    <button class="btn btn-primary-simple btn-sm rounded-pill px-3 py-2" id="menu-toggle"><i class="fas fa-bars me-1"></i> Toggle Menu</button>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon-simple"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active me-3">
+                                <a class="nav-link text-dark-simple hover-text-accent" href="#"><i class="fas fa-bell me-1"></i> Notifications <span class="badge bg-danger ms-1">3</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-simple" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="img/admin_avatar.png" class="rounded-circle me-2" width="30" height="30" alt="Admin Avatar"> Admin User
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end animate-fade-in-down" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="#"><i class="fas fa-user-circle me-2"></i> Profile</a>
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="#"><i class="fas fa-cog me-2"></i> Settings</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-dark-simple hover-bg-light" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid py-4 py-lg-5">
+                <h1 class="fw-bold text-dark-simple mb-4" data-aos="fade-right" data-aos-duration="800">Upload New Media</h1>
+                <p class="text-muted-simple mb-5" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                    Add new images or videos to your NGO's gallery.
+                </p>
+
+                <div class="upload-container-admin" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                    <form action="YOUR_UPLOAD_API_ENDPOINT" method="POST" enctype="multipart/form-data" id="uploadMediaForm">
+                        <div class="row g-4 mb-4">
+                            <div class="col-12">
+                                <label for="mediaFileInput" class="form-label fw-bold text-dark-simple">Select or Drag & Drop Files</label>
+                                <div class="drop-zone" id="dropZone">
+                                    <i class="fas fa-cloud-upload-alt icon"></i>
+                                    <p>Drag & drop your files here, or click to browse</p>
+                                    <small>Supports images (JPG, PNG, GIF) and videos (MP4, MOV, WEBM). Max 10 files.</small>
+                                    <input type="file" id="mediaFileInput" name="mediaFiles[]" multiple accept="image/*,video/*">
+                                </div>
+                            </div>
+                            
+                            <div class="col-12" id="previewArea">
+                                <div class="preview-container"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="galleryCategory" class="form-label fw-bold text-dark-simple">Category/Gallery</label>
+                                <select class="form-select rounded-pill-custom" id="galleryCategory">
+                                    <option selected disabled value="">Select Category</option>
+                                    <option value="Community Events">Community Events</option>
+                                    <option value="Education Initiatives">Education Initiatives</option>
+                                    <option value="Health Camps">Health Camps</option>
+                                    <option value="Volunteer Activities">Volunteer Activities</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="uploadDate" class="form-label fw-bold text-dark-simple">Date Added</label>
+                                <input type="date" class="form-control rounded-pill-custom" id="uploadDate" value="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <div class="col-12">
+                                <label for="mediaDescription" class="form-label fw-bold text-dark-simple">Description</label>
+                                <textarea class="form-control rounded-custom-textarea" id="mediaDescription" rows="3" placeholder="Add a general description for these uploaded files..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-secondary-simple rounded-pill px-4 py-2 me-3" onclick="window.location.href='gallery-list.html'">Cancel</button>
+                            <button type="submit" class="btn btn-primary-simple rounded-pill px-5 py-2" id="uploadButton">Upload Media <i class="fas fa-upload ms-2"></i></button>
+                        </div>
+                    </form>
+                    <div class="alert mt-4 d-none" role="alert" id="uploadFormMessage"></div>
+                </div>
+
+            </div> </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Sidebar Toggle Script (from your dashboard.html)
+        document.getElementById("menu-toggle").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.getElementById("wrapper").classList.toggle("toggled");
+        });
+
+        // AOS Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            // Set current date for the uploadDate input
+            const uploadDateInput = document.getElementById('uploadDate');
+            if (uploadDateInput) {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                const day = String(today.getDate()).padStart(2, '0');
+                uploadDateInput.value = `${year}-${month}-${day}`;
+            }
+        });
+
+        // Highlight active sidebar item
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname.split('/').pop();
+            const sidebarLinks = document.querySelectorAll('#sidebar-wrapper .list-group-item');
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active-sidebar'); // Remove active from all first
+                // Keep 'Gallery' active if on gallery-list or upload-media
+                if (link.getAttribute('href') === currentPath || (currentPath === 'upload-media.html' && link.getAttribute('href') === 'gallery-list.html')) {
+                    link.classList.add('active-sidebar');
+                }
+            });
+        });
+
+        // --- File Upload / Drag & Drop Logic ---
+        const dropZone = document.getElementById('dropZone');
+        const mediaFileInput = document.getElementById('mediaFileInput');
+        const previewContainer = document.querySelector('#previewArea .preview-container');
+        const uploadMediaForm = document.getElementById('uploadMediaForm');
+        const uploadFormMessage = document.getElementById('uploadFormMessage');
+
+        let selectedFiles = []; // To store files selected by user
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false); // For preventing outside the dropzone
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        // Highlight drop zone when dragging over
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-over'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-over'), false);
+        });
+
+        // Handle dropped files
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        // Handle files selected via input click
+        mediaFileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // Handle drop zone click to open file dialog
+        dropZone.addEventListener('click', () => {
+            mediaFileInput.click();
+        });
+
+        function handleFiles(files) {
+            uploadFormMessage.classList.add('d-none'); // Hide previous messages
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                // Basic file type validation (more robust on server side)
+                if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
+                    alert(`File "${file.name}" is not an image or video.`);
+                    continue;
+                }
+                selectedFiles.push(file); // Add to our list
+                displayPreview(file);
+            }
+            // Update the actual file input to reflect selected files for form submission
+            updateFileInput();
+        }
+
+        function displayPreview(file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function() {
+                const previewItem = document.createElement('div');
+                previewItem.classList.add('preview-item');
+                previewItem.dataset.filename = file.name; // Store filename for removal
+
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = reader.result;
+                    img.alt = file.name;
+                    previewItem.appendChild(img);
+                } else if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.src = reader.result;
+                    video.controls = false; // No controls for thumbnail
+                    video.muted = true;
+                    video.preload = "metadata"; // Load enough to get duration/thumbnail
+                    previewItem.appendChild(video);
+                    const videoIcon = document.createElement('i');
+                    videoIcon.classList.add('fas', 'fa-video', 'file-icon');
+                    previewItem.appendChild(videoIcon); // Overlay icon
+                }
+
+                const removeBtn = document.createElement('button');
+                removeBtn.classList.add('remove-btn');
+                removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                removeBtn.title = `Remove ${file.name}`;
+                removeBtn.addEventListener('click', () => removeFile(file.name));
+                previewItem.appendChild(removeBtn);
+
+                previewContainer.appendChild(previewItem);
+            };
+        }
+
+        function removeFile(fileNameToRemove) {
+            selectedFiles = selectedFiles.filter(file => file.name !== fileNameToRemove);
+            const itemToRemove = document.querySelector(`.preview-item[data-filename="${fileNameToRemove}"]`);
+            if (itemToRemove) {
+                itemToRemove.remove();
+            }
+            updateFileInput(); // Update the actual file input
+        }
+
+        function updateFileInput() {
+            // Create a new DataTransfer object and add the selected files
+            const dataTransfer = new DataTransfer();
+            selectedFiles.forEach(file => dataTransfer.items.add(file));
+            mediaFileInput.files = dataTransfer.files;
+        }
+
+        // Handle form submission (placeholder)
+        uploadMediaForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            if (selectedFiles.length === 0) {
+                uploadFormMessage.classList.remove('d-none');
+                uploadFormMessage.classList.remove('alert-success');
+                uploadFormMessage.classList.add('alert-danger');
+                uploadFormMessage.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Please select at least one file to upload.';
+                return;
+            }
+
+            const category = document.getElementById('galleryCategory').value;
+            if (!category) {
+                uploadFormMessage.classList.remove('d-none');
+                uploadFormMessage.classList.remove('alert-success');
+                uploadFormMessage.classList.add('alert-danger');
+                uploadFormMessage.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Please select a category for your media.';
+                return;
+            }
+
+            // In a real application, you would send this data (selectedFiles, category, description, etc.) to a backend API.
+            // You would typically use FormData:
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                formData.append('mediaFiles[]', file); // Append each file
+            });
+            formData.append('category', category);
+            formData.append('description', document.getElementById('mediaDescription').value);
+            formData.append('uploadDate', document.getElementById('uploadDate').value);
+
+            // Example fetch request (uncomment and replace URL for real use)
+            /*
+            fetch('YOUR_UPLOAD_API_ENDPOINT', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Upload success:', data);
+                uploadFormMessage.classList.remove('d-none');
+                uploadFormMessage.classList.remove('alert-danger');
+                uploadFormMessage.classList.add('alert-success');
+                uploadFormMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i> Media uploaded successfully!';
+                
+                // Clear selected files and previews after successful upload
+                selectedFiles = [];
+                previewContainer.innerHTML = '';
+                uploadMediaForm.reset();
+                updateFileInput(); // Clear the hidden file input
+                // Reset date to current
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const day = String(today.getDate()).padStart(2, '0');
+                document.getElementById('uploadDate').value = `${year}-${month}-${day}`;
+
+            })
+            .catch(error => {
+                console.error('Upload error:', error);
+                uploadFormMessage.classList.remove('d-none');
+                uploadFormMessage.classList.remove('alert-success');
+                uploadFormMessage.classList.add('alert-danger');
+                uploadFormMessage.innerHTML = '<i class="fas fa-times-circle me-2"></i> Upload failed. Please try again.';
+            });
+            */
+            
+            // Placeholder success message for demonstration
+            uploadFormMessage.classList.remove('d-none');
+            uploadFormMessage.classList.remove('alert-danger');
+            uploadFormMessage.classList.add('alert-success');
+            uploadFormMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i> Media uploaded successfully! (This is a placeholder action)';
+            
+            // Clear selected files and previews after successful upload (for placeholder)
+            selectedFiles = [];
+            previewContainer.innerHTML = '';
+            uploadMediaForm.reset();
+            updateFileInput(); // Clear the hidden file input
+            // Reset date to current
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            document.getElementById('uploadDate').value = `${year}-${month}-${day}`;
+        });
+    </script>
+</body>
+</html>
